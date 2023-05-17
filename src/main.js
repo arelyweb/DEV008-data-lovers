@@ -20,4 +20,38 @@ btnCerrar.onclick = function () {
 //   }
 // };
 
+
+/* -------------------------------------------------------------------------- */
+/*                              Muestra datos en listado                      */
+/* -------------------------------------------------------------------------- */
+
+const cuerpoTabla = document.querySelector("#cuerpoTabla");
+//const busquedaNombre = 
+//const filterNombre = data.pokemon.filter(pokemon => pokemon.name === "bulbasaur" );
+//console.log(filterNombre);
+
+data.pokemon.forEach(pokemon => {
+  // Crear un <tr>
+  const tr = document.createElement("tr");
+  // Creamos el <td> de nombre y lo adjuntamos a tr
+  const tdNombre = document.createElement("td");
+  tdNombre.textContent = pokemon.name; // el textContent del td es el nombre
+  tr.appendChild(tdNombre);
+  // El td de generacion
+  const tdGeneracion = document.createElement("td");
+  tdGeneracion.textContent = pokemon.generation.name;
+  tr.appendChild(tdGeneracion);
+  // El td del tipo
+  const tdTipo = document.createElement("td");
+  tdTipo.textContent = pokemon.type;
+  tr.appendChild(tdTipo);
+  // El td del id
+  const tdId = document.createElement("td");
+  tdId.textContent = pokemon.num;
+  tr.appendChild(tdId);
+  // Finalmente agregamos el <tr> al cuerpo de la tabla
+  cuerpoTabla.appendChild(tr);
+  // Y el ciclo se repite hasta que se termina de recorrer todo el arreglo
+});
+
 console.log(example, data);
