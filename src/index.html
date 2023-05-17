@@ -8,9 +8,63 @@
 </head>
 
 <body>
+  <header>
+    <img src="..\img\lineaPokemon.png" alt="">
+  </header>
+  <!-- ----------------------------------------------------------------*/
+  /*-------------menuPrincipal----------------------------------------*/
+  /*------------------------------------------------------------------ -->
+  <main class="main-conteiner">
+    <section class="main-conteiner__section-busqueda">
+      <div class="main-conteiner__grid">
+        <!--inicia grid-->
+        <div>
+          <div class="input-wrapper">
+            <input type="search" class="input-wrapper__input" placeholder="Buscar por nombre" />
+            <svg xmlns="http://www.w3.org/2000/svg" class="input-wrapper__input__input-icon" viewBox="0 0 20 20"
+              fill="currentColor">
+              <path fill-rule="evenodd"
+                d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+        </div>
+        <div>
+          <button class="button">Buscar</button>
+          <label for="">Ordenar:</label>
+          <select class="button" name="" id="">
+            <option class="button__option" value="">Ascedentemente</option>
+            <option class="button__option" value="">Descendentemente</option>
+          </select>
+          <button class="button prom">Promedio de pok&eacute;mones de agua</button>
+        </div>
+      </div>
+    </section>
+    <section class="main-conteiner__section-table">
+      <table class="main-conteiner__table">
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Generaci&oacute;n</th>
+            <th>Tipo</th>
+            <th>Pok&eacute;mon</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpoTabla">
+
+        </tbody>
+    </section>
+  </main>
+  <!-- ----------------------------------------------------------------*/
+  /*------------- Termina menuPrincipal---------------------------------*/
+  /*------------------------------------------------------------------ -->
+  <footer></footer>
   <div id="root"></div>
   <script src="main.js" type="module"></script>
+
 </body>
+
+
 
 
 <!-- ---------------------------- Modal pokemon ---------------------------- -->
