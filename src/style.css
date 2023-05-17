@@ -1,0 +1,86 @@
+@import url("https://fonts.googleapis.com/css2?family=ABeeZee&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
+/*colores*/
+/*fuente*/
+/*propiedades de pagina principal*/
+header {
+  margin: -8px;
+  margin-bottom: 30px;
+}
+
+img {
+  width: 100%;
+  object-fit: cover;
+  object-position: bottom;
+}
+
+.main-conteiner {
+  padding: 25px;
+  font-family: "Roboto", sans-serif;
+}
+.main-conteiner__section-busqueda {
+  margin-bottom: 30px;
+}
+.main-conteiner__section-table {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  height: 680px;
+  left: 165px;
+  right: 131px;
+  top: 305px;
+}
+.main-conteiner__grid {
+  display: grid;
+  grid-template-columns: 1fr 4fr;
+}
+.main-conteiner__table {
+  font-size: 16px;
+  background-color: #F7F7F7;
+  width: 100%;
+  border-radius: 8px;
+}
+
+.button {
+  color: rgb(255, 255, 255);
+  background: #77A6E1;
+  padding: 10px 20px;
+  border-radius: 6px;
+  font-family: "ABeeZee", sans-serif;
+}
+.button__option {
+  color: #77A6E1;
+  background-color: rgb(255, 255, 255);
+}
+
+.input-wrapper {
+  position: relative;
+  width: 271px;
+}
+.input-wrapper__input {
+  box-sizing: border-box;
+  color: #77A6E1;
+  font-size: 15px;
+  padding: 10px 20px 10px 35px;
+  width: 100%;
+  font-family: "ABeeZee", sans-serif;
+  border-radius: 6px;
+}
+.input-wrapper__input__input-icon {
+  color: #191919;
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.prom {
+  float: right;
+}
+
+/* fin de propiedades de pagina principal*/
+
+/*# sourceMappingURL=style.css.map */
