@@ -1,9 +1,25 @@
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
 /* --------------------------------- Colores -------------------------------- */
+$sl-blanco: rgb(255, 255, 255);
+$sl-bluepurple: #77a6e1;
+$sl-red: #c91515;
+$sl-cafe: #4a3203;
+$sl-pokefondo: #f1dddd;
+$sl-fondocoltable: #f7f7f7;
+$sl-divicoltable: #f2f2f2;
+$sl-generacion: #0080ff;
+$sl-fondoModal: #c4c4c4;
+
+$color-fondo: rgba(0, 0, 0, 0.8);
 /* --------------------------------- fuentes -------------------------------- */
+$tp-aaeezee: "ABeeZee", sans-serif;
+$tp-roboto: "Roboto", sans-serif;
+$tp-inconsolata: "Inconsolata", monospace;
+
 /* -------------------------------------------------------------------------- */
 /*                             //clases del modal                             */
 /* -------------------------------------------------------------------------- */
+
 .modal {
   /* TODO: por default debe estar en none para que inicie oculto  */
   display: block;
@@ -14,12 +30,12 @@
   width: 100%;
   height: 100%;
   overflow: auto;
-  background-color: rgba(0, 0, 0, 0.8);
-  font-family: "Inconsolata", monospace;
+  background-color: $color-fondo;
+  font-family: $tp-inconsolata;
 }
 
 .modal-content {
-  background-color: #c4c4c4;
+  background-color: $sl-fondoModal;
   margin: 15% auto;
   padding: 20px;
   border-radius: 4%;
@@ -35,7 +51,7 @@
 }
 
 .borde-cuadro {
-  background: #f1dddd;
+  background: $sl-pokefondo;
   border: 14px solid #4a3203;
   border-radius: 21px;
 }
@@ -58,6 +74,7 @@
 }
 
 /* Ellipse 2 */
+
 .contenedor-elipse {
   display: flex;
   justify-content: center;
@@ -88,5 +105,3 @@
     width: 80%;
   }
 }
-
-/*# sourceMappingURL=style.css.map */

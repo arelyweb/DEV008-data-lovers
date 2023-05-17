@@ -1,12 +1,55 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Data Lovers</title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script src="main.js" type="module"></script>
-  </body>
+
+<head>
+  <meta charset="utf-8">
+  <title>Data Lovers</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div id="root"></div>
+  <script src="main.js" type="module"></script>
+</body>
+
+
+<!-- ---------------------------- Modal pokemon ---------------------------- -->
+<div id="modalPokemon" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span id="btnCerrar" class="close">&times;</span>
+    <p>Pokemon</p>
+    <div class="contenerdor-elipse">
+      <div class="contenedor-elipse">
+        <div class="elipse"></div>
+        <div class="elipse"></div>
+      </div>
+    </div>
+    <div class="contenedor-horizonal borde-cuadro">
+      <div class="infoPokemon">
+        <p>Informacion pokemon: <span id="info">asdfghjkl</span> </p>
+        <p>Generación: <span id="generacion">asdfghjk</span> </p>
+        <p>Tipo: <span id="tipo">sdfghjkl</span></p>
+        <p>Rareza: <span id="Rareza">sdfghjk</span> </p>
+        <p>Debilidades: <span id="Debilidades">swdfghjkl</span> </p>
+        <p>Resistencia: <span id="Resistencia">sdfghjkl</span> </p>
+      </div>
+      <div class="imgPokemon">
+        <img src="https://www.serebii.net/pokemongo/pokemon/001.png" alt="">
+      </div>
+    </div>
+    <div class="contenedor-horizonal">
+      <div id="elipseCerrar" class="elipse">
+        <img src="./icons/regresar.png" class="imgRegresar" alt="">
+      </div>
+      <div>
+        <img src="./icons/menu.png" alt="">
+      </div>
+    </div>
+
+  </div>
+
+</div>
+
 </html>
