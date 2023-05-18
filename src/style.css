@@ -89,7 +89,7 @@ img {
 /*# sourceMappingURL=style.css.map */
 .modal {
   /* TODO: por default debe estar en none para que inicie oculto  */
-  display: block;
+  display: none;
   position: fixed;
   z-index: 1;
   left: 0;

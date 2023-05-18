@@ -1,4 +1,4 @@
-import { example } from "./data.js";
+import { obtenerPokemon } from "./data.js";
 // import data from './data/lol/lol.js';
 import data from "./data/pokemon/pokemon.js";
 // import data from './data/rickandmorty/rickandmorty.js';
@@ -20,17 +20,16 @@ btnCerrar.onclick = function () {
 //   }
 // };
 
-
 /* -------------------------------------------------------------------------- */
 /*                              Muestra datos en listado                      */
 /* -------------------------------------------------------------------------- */
 
 const cuerpoTabla = document.querySelector("#cuerpoTabla");
-//const busquedaNombre = 
+//const busquedaNombre =
 //const filterNombre = data.pokemon.filter(pokemon => pokemon.name === "bulbasaur" );
 //console.log(filterNombre);
 
-data.pokemon.forEach(pokemon => {
+data.pokemon.forEach((pokemon) => {
   // Crear un <tr>
   const tr = document.createElement("tr");
   // Creamos el <td> de nombre y lo adjuntamos a tr
@@ -52,6 +51,26 @@ data.pokemon.forEach(pokemon => {
   // Finalmente agregamos el <tr> al cuerpo de la tabla
   cuerpoTabla.appendChild(tr);
   // Y el ciclo se repite hasta que se termina de recorrer todo el arreglo
+
+  //agregar evento click a la celda nombre
+  tdNombre.addEventListener("click", mostrarModal);
 });
 
-console.log(example, data);
+function mostrarModal(event) {
+  const nombrePokemon = event.target.innerHTML;
+  const pokemonObtenido = obtenerPokemon(nombrePokemon);
+
+  document.getElementById("info").innerHTML = pokemonObtenido.name;
+  document.getElementById("generacion").innerHTML =
+    pokemonObtenido.generation.num + ": " + pokemonObtenido.generation.name;
+  document.getElementById("tipo").innerHTML = pokemonObtenido.type.join(", ");
+  document.getElementById("rareza").innerHTML =
+    pokemonObtenido["pokemon-rarity"];
+  document.getElementById("debilidades").innerHTML =
+    pokemonObtenido.weaknesses.join(", ");
+  document.getElementById("resistencia").innerHTML =
+    pokemonObtenido.resistant.join(", ");
+  document.getElementById("imagenPokemon").src = pokemonObtenido.img;
+
+  modalPokemon.style.display = "block";
+}
