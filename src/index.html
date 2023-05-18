@@ -24,7 +24,7 @@
         <!--inicia grid-->
         <div>
           <div class="input-wrapper">
-            <input type="search" class="input-wrapper__input" placeholder="Buscar por nombre" />
+            <input type="search" id="idInputBusqueda" class="input-wrapper__input" placeholder="Buscar por nombre" />
             <svg xmlns="http://www.w3.org/2000/svg" class="input-wrapper__input__input-icon" viewBox="0 0 20 20"
               fill="currentColor">
               <path fill-rule="evenodd"
@@ -34,7 +34,7 @@
           </div>
         </div>
         <div>
-          <button class="button">Buscar</button>
+          <button class="button" id="idBotonBuscar">Buscar</button>
           <label for="">Ordenar:</label>
           <select class="button" name="" id="">
             <option class="button__option" value="">Ascedentemente</option>
@@ -45,7 +45,7 @@
       </div>
     </section>
     <section class="main-conteiner__section-table">
-      <table class="main-conteiner__table">
+      <table class="main-conteiner__table" id="idtablapokemones">
         <thead>
           <tr>
             <th>Nombre</th>

@@ -1,12 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=ABeeZee&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Inconsolata&display=swap");
-/* --------------------------------- Colores -------------------------------- */
-/* --------------------------------- fuentes -------------------------------- */
-/* -------------------------------------------------------------------------- */
-/*                             //clases del modal                             */
-/* -------------------------------------------------------------------------- */
-
+/*colores*/
+/*fuente*/
+/*propiedades de pagina principal*/
 header {
   margin: -8px;
   margin-bottom: 30px;
@@ -16,6 +13,11 @@ img {
   width: 100%;
   object-fit: cover;
   object-position: bottom;
+}
+
+td {
+  background-color: rgb(255, 255, 255);
+  text-align: center;
 }
 
 .main-conteiner {
@@ -84,9 +86,18 @@ img {
   float: right;
 }
 
-/* fin de propiedades de pagina principal*/
+.buttonpill {
+  border: none;
+  padding: 5px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 16px;
+}
 
-/*# sourceMappingURL=style.css.map */
+/* fin de propiedades de pagina principal*/
 .modal {
   /* TODO: por default debe estar en none para que inicie oculto  */
   display: block;
