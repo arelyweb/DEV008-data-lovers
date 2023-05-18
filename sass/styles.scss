@@ -12,6 +12,13 @@ img {
    object-fit: cover;
    object-position: bottom;
   }
+
+  
+td{
+    background-color: variables.$sl-blanco;
+    text-align: center;
+  }
+  
   
  
 .main-conteiner{
@@ -84,4 +91,99 @@ img {
 
 }
 
+.buttonpill {
+    border: none;
+    padding: 5px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 16px;
+  }
 /* fin de propiedades de pagina principal*/
+
+.modal {
+    /* TODO: por default debe estar en none para que inicie oculto  */
+    display: block;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+    font-family: "Inconsolata", monospace;
+  }
+  
+  .modal-content {
+    background-color: #c4c4c4;
+    margin: 15% auto;
+    padding: 20px;
+    border-radius: 4%;
+    width: 40%;
+  }
+  
+  .contenedor-horizonal {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .borde-cuadro {
+    background: #f1dddd;
+    border: 14px solid #4a3203;
+    border-radius: 21px;
+  }
+  
+  .imgPokemon {
+    margin-right: 50px;
+    margin-bottom: 40px;
+  }
+  
+  /* Ellipse 1 regresar */
+  .elipse {
+    width: 25px;
+    height: 25px;
+    background-color: red;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    display: flex;
+    padding: 2px;
+  }
+  
+  /* Ellipse 2 */
+  .contenedor-elipse {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .imgRegresar {
+    object-fit: contain;
+  }
+  
+  .close {
+    color: black;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  @media screen and (max-width: 1000px) {
+    .modal-content {
+      width: 80%;
+    }
+  }
