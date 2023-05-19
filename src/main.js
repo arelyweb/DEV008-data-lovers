@@ -1,4 +1,4 @@
-import { obtenerPokemon } from "./data.js";
+import { obtenerPokemon, ordenarPokemon } from "./data.js";
 // import data from './data/lol/lol.js';
 import data from "./data/pokemon/pokemon.js";
 // import data from './data/rickandmorty/rickandmorty.js';
@@ -22,11 +22,6 @@ btnCerrar.onclick = function () {
   modalPokemon.style.display = "none";
 };
 
-// window.onclick = function (event) {
-//   if (event.target === modalPokemon) {
-//     modalPokemon.style.display = "none";
-//   }
-// };
 /* -------------------------------------------------------------------------- */
 /*                    Filtra datos por nombre y muestra listado               */
 /* -------------------------------------------------------------------------- */
@@ -65,6 +60,7 @@ function muestraDatosTabla(arrayPokemones) {
     const tdNombre = document.createElement("td");
     tdNombre.textContent = pokemon.name; // el textContent del td es el nombre
     tr.appendChild(tdNombre);
+
     // El td de generacion
     const tdGeneracion = document.createElement("td");
     tdGeneracion.textContent = pokemon.generation.name;
@@ -73,36 +69,54 @@ function muestraDatosTabla(arrayPokemones) {
     const tdTipo = document.createElement("td");
     tdTipo.textContent = pokemon.type;
     tr.appendChild(tdTipo);
+
     // El td del id
-    const tdId = document.createElement("td");
-    tr.appendChild(tdId);
-    tdId.innerHTML =
-      "<button class='buttonpill' value=" +
-      `${pokemon.num}` +
-      ">Ver Pok&eacute;mon</button>";
-    // Finalmente agregamos el <tr> al cuerpo de la tabla
+    const tdVer = document.createElement("td");
+
+    //botton abrir modal
+    const btnModal = document.createElement("button");
+    btnModal.classList.add("buttonpill");
+    btnModal.innerHTML = "Ver pokemón";
+    btnModal.value = pokemon.name;
+
+    tdVer.appendChild(btnModal);
+
+    tr.appendChild(tdVer);
+
     cuerpoTabla.appendChild(tr);
     // Y el ciclo se repite hasta que se termina de recorrer todo el arreglo
+
     //agregar evento click a la celda nombre
-    tdNombre.addEventListener("click", mostrarModal);
+    btnModal.addEventListener("click", mostrarModal);
   });
 }
 
+/* -------------------------------------------------------------------------- */
+/*                                mostrar modal                               */
+/* -------------------------------------------------------------------------- */
 function mostrarModal(event) {
-  const nombrePokemon = event.target.innerHTML;
-  const pokemonObtenido = obtenerPokemon(nombrePokemon);
-
-  document.getElementById("info").innerHTML = pokemonObtenido.name;
+  const nombrePokemon = event.target.value;
+  const pokemon = obtenerPokemon(nombrePokemon);
+  document.getElementById("info").innerHTML = pokemon.name;
   document.getElementById("generacion").innerHTML =
-    pokemonObtenido.generation.num + ": " + pokemonObtenido.generation.name;
-  document.getElementById("tipo").innerHTML = pokemonObtenido.type.join(", ");
-  document.getElementById("rareza").innerHTML =
-    pokemonObtenido["pokemon-rarity"];
+    pokemon.generation.num + ": " + pokemon.generation.name;
+  document.getElementById("tipo").innerHTML = pokemon.type.join(", ");
+  document.getElementById("rareza").innerHTML = pokemon["pokemon-rarity"];
   document.getElementById("debilidades").innerHTML =
-    pokemonObtenido.weaknesses.join(", ");
+    pokemon.weaknesses.join(", ");
   document.getElementById("resistencia").innerHTML =
-    pokemonObtenido.resistant.join(", ");
-  document.getElementById("imagenPokemon").src = pokemonObtenido.img;
-
+    pokemon.resistant.join(", ");
+  document.getElementById("nombreTitulo").innerHTML =
+    pokemon.name.toUpperCase();
+  document.getElementById("imagenPokemon").src = pokemon.img;
   modalPokemon.style.display = "block";
 }
+/* -------------------------------------------------------------------------- */
+/*                  ordenamiento ascendente y descendente DOM                 */
+/* -------------------------------------------------------------------------- */
+document.getElementById("slcOrdenar").addEventListener("change", function (e) {
+  const tipoOrdenamiento = e.target.value;
+  const pokemonOrdenados = ordenarPokemon(tipoOrdenamiento);
+  document.getElementById("cuerpoTabla").innerHTML = ""; //limpieza de tabla
+  muestraDatosTabla(pokemonOrdenados); //llenado de tabla :)
+});

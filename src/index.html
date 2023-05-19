@@ -36,9 +36,10 @@
         <div>
           <button class="button" id="idBotonBuscar">Buscar</button>
           <label for="">Ordenar:</label>
-          <select class="button" name="" id="">
-            <option class="button__option" value="">Ascedentemente</option>
-            <option class="button__option" value="">Descendentemente</option>
+          <select class="button" name="" id="slcOrdenar">
+            <option selected="true" disabled="disabled">Seleccione tipo de ordenamiento</option>
+            <option class="button__option" value="asc">Ascedentemente</option>
+            <option class="button__option" value="desc">Descendentemente</option>
           </select>
           <button class="button prom">Promedio de pok&eacute;mones de agua</button>
         </div>
@@ -77,7 +78,7 @@
   <!-- Modal content -->
   <div class="modal-content">
     <span id="btnCerrar" class="close">&times;</span>
-    <p>Pokemon</p>
+    <p id="nombreTitulo">Pokemon</p>
     <div class="contenerdor-elipse">
       <div class="contenedor-elipse">
         <div class="elipse"></div>
@@ -89,7 +90,7 @@
         <p>Nombre del pokemon: <span id="info"></span> </p>
         <p>Generación: <span id="generacion"></span> </p>
         <p>Tipo: <span id="tipo"></span></p>
-        <p>Rareza: <span id="rareza">sdfghjk</span> </p>
+        <p>Rareza: <span id="rareza"></span> </p>
         <p>Debilidades: <span id="debilidades"></span> </p>
         <p>Resistencia: <span id="resistencia"></span> </p>
       </div>
