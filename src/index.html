@@ -5,6 +5,8 @@
   <meta charset="utf-8">
   <title>Data Lovers</title>
   <link rel="stylesheet" href="style.css" />
+  <!-- precarga de libreria -->
+
 </head>
 
 <body>
@@ -41,7 +43,7 @@
             <option class="button__option" value="asc">Ascedentemente</option>
             <option class="button__option" value="desc">Descendentemente</option>
           </select>
-          <button class="button prom">Promedio de pok&eacute;mones de agua</button>
+          <button class="button prom" id="promedioPokemones">Promedio de pokemones</button>
         </div>
       </div>
     </section>
@@ -63,6 +65,38 @@
   <!-- ----------------------------------------------------------------*/
   /*------------- Termina menuPrincipal---------------------------------*/
   /*------------------------------------------------------------------ -->
+  <!-- ---------------------------- Modal pokemon ---------------------------- -->
+  <div id="modalPokemon" class="modal">
+
+    <!-- Modal content -->
+    <div class="modal-content">
+      <span id="btnCerrar" class="close">&times;</span>
+      <p id="nombreTitulo">Pokemon</p>
+      <div class="contenerdor-elipse">
+        <div class="contenedor-elipse">
+          <div class="elipse"></div>
+          <div class="elipse"></div>
+        </div>
+      </div>
+      <div class="contenedor-horizonal borde-cuadro">
+        <div id="informacion" class="infoPokemon">
+        </div>
+        <div class="imgPokemon">
+          <img id="imagenPokemon" src="" alt="">
+        </div>
+      </div>
+      <div class="contenedor-horizonal">
+        <div id="elipseCerrar" class="elipse">
+          <img src="./icons/regresar.png" class="imgRegresar" alt="">
+        </div>
+        <div>
+          <img src="./icons/menu.png" alt="">
+        </div>
+      </div>
+
+    </div>
+
+  </div>
   <footer></footer>
   <div id="root"></div>
   <script src="main.js" type="module"></script>
@@ -72,43 +106,6 @@
 
 
 
-<!-- ---------------------------- Modal pokemon ---------------------------- -->
-<div id="modalPokemon" class="modal">
 
-  <!-- Modal content -->
-  <div class="modal-content">
-    <span id="btnCerrar" class="close">&times;</span>
-    <p id="nombreTitulo">Pokemon</p>
-    <div class="contenerdor-elipse">
-      <div class="contenedor-elipse">
-        <div class="elipse"></div>
-        <div class="elipse"></div>
-      </div>
-    </div>
-    <div class="contenedor-horizonal borde-cuadro">
-      <div class="infoPokemon">
-        <p>Nombre del pokemon: <span id="info"></span> </p>
-        <p>Generación: <span id="generacion"></span> </p>
-        <p>Tipo: <span id="tipo"></span></p>
-        <p>Rareza: <span id="rareza"></span> </p>
-        <p>Debilidades: <span id="debilidades"></span> </p>
-        <p>Resistencia: <span id="resistencia"></span> </p>
-      </div>
-      <div class="imgPokemon">
-        <img id="imagenPokemon" src="" alt="">
-      </div>
-    </div>
-    <div class="contenedor-horizonal">
-      <div id="elipseCerrar" class="elipse">
-        <img src="./icons/regresar.png" class="imgRegresar" alt="">
-      </div>
-      <div>
-        <img src="./icons/menu.png" alt="">
-      </div>
-    </div>
-
-  </div>
-
-</div>
 
 </html>

@@ -1,4 +1,5 @@
 import data from "./data/pokemon/pokemon.js";
+
 // estas funciones son de ejemplo
 
 export const obtenerPokemon = (nombre) => {
@@ -27,4 +28,22 @@ export const ordenarPokemon = (tipoOrdenamiento) => {
       return 0;
     });
   }
+};
+
+export const contarTipoPokemon = () => {
+  const arrayTipoPokemon = [];
+
+  data.pokemon.forEach((pokemon) => {
+    pokemon.type.forEach((type) => {
+      const posicion = arrayTipoPokemon.findIndex(
+        (item) => item.tipoPokemon === type
+      );
+      if (posicion === -1) {
+        arrayTipoPokemon.push({ tipoPokemon: type, total: 1 });
+      } else {
+        arrayTipoPokemon[posicion].total += 1;
+      }
+    });
+  });
+  return arrayTipoPokemon;
 };

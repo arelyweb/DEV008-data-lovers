@@ -1,7 +1,5 @@
-import { obtenerPokemon, ordenarPokemon } from "./data.js";
-// import data from './data/lol/lol.js';
+import { obtenerPokemon, ordenarPokemon, contarTipoPokemon } from "./data.js";
 import data from "./data/pokemon/pokemon.js";
-// import data from './data/rickandmorty/rickandmorty.js';
 
 /* -------------------------------------------------------------------------- */
 /*                Carga inicial de listado de pokemones                       */
@@ -11,21 +9,12 @@ window.addEventListener("load", function () {
   muestraDatosTabla(data.pokemon);
 });
 
-/* -------------------------------------------------------------------------- */
-/*                              Interaccion Modal                             */
-/* -------------------------------------------------------------------------- */
-
+//declaracion modal-Varoable global se usa en varias funciones
 const modalPokemon = document.getElementById("modalPokemon");
-const btnCerrar = document.getElementById("btnCerrar");
-
-btnCerrar.onclick = function () {
-  modalPokemon.style.display = "none";
-};
 
 /* -------------------------------------------------------------------------- */
 /*                    Filtra datos por nombre y muestra listado               */
 /* -------------------------------------------------------------------------- */
-
 document.getElementById("idBotonBuscar").addEventListener("click", function () {
   const inputBusquedaNombre = document.getElementById("idInputBusqueda").value;
   const tablaPokemones = document
@@ -87,30 +76,76 @@ function muestraDatosTabla(arrayPokemones) {
     // Y el ciclo se repite hasta que se termina de recorrer todo el arreglo
 
     //agregar evento click a la celda nombre
-    btnModal.addEventListener("click", mostrarModal);
+    btnModal.addEventListener("click", function () {
+      mostrarModal(this, "modalDetalle");
+    });
   });
 }
 
 /* -------------------------------------------------------------------------- */
+/*                        Mostrar modal de estadistica                        */
+/* -------------------------------------------------------------------------- */
+document
+  .getElementById("promedioPokemones")
+  .addEventListener("click", function () {
+    mostrarModal(this, "modalEstadistica");
+  });
+
+/* -------------------------------------------------------------------------- */
 /*                                mostrar modal                               */
 /* -------------------------------------------------------------------------- */
-function mostrarModal(event) {
-  const nombrePokemon = event.target.value;
-  const pokemon = obtenerPokemon(nombrePokemon);
-  document.getElementById("info").innerHTML = pokemon.name;
-  document.getElementById("generacion").innerHTML =
-    pokemon.generation.num + ": " + pokemon.generation.name;
-  document.getElementById("tipo").innerHTML = pokemon.type.join(", ");
-  document.getElementById("rareza").innerHTML = pokemon["pokemon-rarity"];
-  document.getElementById("debilidades").innerHTML =
-    pokemon.weaknesses.join(", ");
-  document.getElementById("resistencia").innerHTML =
-    pokemon.resistant.join(", ");
-  document.getElementById("nombreTitulo").innerHTML =
-    pokemon.name.toUpperCase();
-  document.getElementById("imagenPokemon").src = pokemon.img;
+function mostrarModal(e, tipoModal) {
+  const informacion = document.getElementById("informacion");
+  informacion.innerHTML = "";
+  document.getElementById("imagenPokemon").src = "";
+
+  if (tipoModal === "modalDetalle") {
+    const nombrePokemon = e.value;
+    const pokemon = obtenerPokemon(nombrePokemon);
+
+    informacion.appendChild(
+      document.createElement("p")
+    ).innerHTML = `Nombre Pokemon: ${capitalizar(pokemon.name)}`;
+    informacion.appendChild(
+      document.createElement("p")
+    ).innerHTML = `Tipo: ${capitalizar(pokemon.type.join(", "))}`;
+    informacion.appendChild(
+      document.createElement("p")
+    ).innerHTML = `Generación: ${capitalizar(
+      pokemon.generation.num
+    )} - ${capitalizar(pokemon.generation.name)}`;
+    informacion.appendChild(
+      document.createElement("p")
+    ).innerHTML = `Rareza: ${capitalizar(pokemon["pokemon-rarity"])}`;
+    informacion.appendChild(
+      document.createElement("p")
+    ).innerHTML = `Debilidades: ${capitalizar(pokemon.weaknesses.join(", "))}`;
+    informacion.appendChild(
+      document.createElement("p")
+    ).innerHTML = `Resistencia: ${capitalizar(pokemon.resistant.join(", "))}`;
+    document.getElementById("imagenPokemon").src = pokemon.img;
+  } else {
+    const estadistica = contarTipoPokemon();
+
+    estadistica.forEach((elemento) => {
+      informacion.appendChild(
+        document.createElement("p")
+      ).innerHTML = `${capitalizar(elemento.tipoPokemon)}: ${
+        elemento.total
+      } pokemones`;
+    });
+  }
   modalPokemon.style.display = "block";
 }
+/* -------------------------------------------------------------------------- */
+/*                              cierres de modal                              */
+/* -------------------------------------------------------------------------- */
+document.getElementById("btnCerrar").onclick = function () {
+  modalPokemon.style.display = "none";
+};
+document.getElementById("elipseCerrar").onclick = function () {
+  modalPokemon.style.display = "none";
+};
 /* -------------------------------------------------------------------------- */
 /*                  ordenamiento ascendente y descendente DOM                 */
 /* -------------------------------------------------------------------------- */
@@ -120,3 +155,7 @@ document.getElementById("slcOrdenar").addEventListener("change", function (e) {
   document.getElementById("cuerpoTabla").innerHTML = ""; //limpieza de tabla
   muestraDatosTabla(pokemonOrdenados); //llenado de tabla :)
 });
+
+function capitalizar(palabra) {
+  return palabra.charAt(0).toUpperCase() + palabra.slice(1);
+}
