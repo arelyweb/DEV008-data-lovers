@@ -14,12 +14,15 @@ img {
   }
 
   
-td{
-    background-color: variables.$sl-blanco;
+  td {
     text-align: center;
   }
   
+  table th {background-color:#c4c4c4; }
   
+  table tr:nth-child(odd) { background-color: rgb(255, 255, 255);}
+  
+  table tr:nth-child(even) { background-color:#F7F7F7;}
  
 .main-conteiner{
     padding: 25px;
@@ -105,7 +108,7 @@ td{
 
 .modal {
     /* TODO: por default debe estar en none para que inicie oculto  */
-    display: block;
+    display: none;
     position: fixed;
     z-index: 1;
     left: 0;

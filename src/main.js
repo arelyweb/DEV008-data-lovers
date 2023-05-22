@@ -1,12 +1,22 @@
-import { obtenerPokemon, ordenarPokemon, contarTipoPokemon } from "./data.js";
+import {
+  filtraPokemon,
+  obtenerPokemon,
+  ordenarPokemon,
+  contarTipoPokemon,
+} from "./data.js";
+// import data from './data/lol/lol.js';
 import data from "./data/pokemon/pokemon.js";
+
+document.getElementById("pokemon").addEventListener("click", function () {
+  limpiaTabla();
+});
 
 /* -------------------------------------------------------------------------- */
 /*                Carga inicial de listado de pokemones                       */
 /* -------------------------------------------------------------------------- */
 
 window.addEventListener("load", function () {
-  muestraDatosTabla(data.pokemon);
+  limpiaTabla();
 });
 
 //declaracion modal-Varoable global se usa en varias funciones
@@ -21,18 +31,10 @@ document.getElementById("idBotonBuscar").addEventListener("click", function () {
     .getElementById("idtablapokemones")
     .getElementsByTagName("tbody")[0];
 
-  const pattern = inputBusquedaNombre
-    .split("")
-    .map((x) => {
-      return `(?=.*${x})`; //?= pregunta . cualquier caracter excepto salto de linea * coincide con cero o mas instancias de un caracter
-    })
-    .join("");
-  const regex = new RegExp(`${pattern}`, "g");
-  const arrayPokemonBusquedaxNombre = data.pokemon.filter((pokemon) =>
-    pokemon.name.match(regex)
-  );
+  const pokemonesFiltrados = filtraPokemon(inputBusquedaNombre.toLowerCase());
+
   tablaPokemones.innerHTML = "";
-  muestraDatosTabla(arrayPokemonBusquedaxNombre);
+  muestraDatosTabla(pokemonesFiltrados);
 });
 
 /* -------------------------------------------------------------------------- */
@@ -45,7 +47,11 @@ function muestraDatosTabla(arrayPokemones) {
   arrayPokemones.forEach((pokemon) => {
     // Crear un <tr>
     const tr = document.createElement("tr");
-    // Creamos el <td> de nombre y lo adjuntamos a tr
+    // Creamos el <td> de numero y lo adjuntamos a tr
+    const tdNumero = document.createElement("td");
+    tdNumero.textContent = pokemon.num; // el textContent del td es el nombre
+    tr.appendChild(tdNumero);
+    // Creamos el <td> de nombre
     const tdNombre = document.createElement("td");
     tdNombre.textContent = pokemon.name; // el textContent del td es el nombre
     tr.appendChild(tdNombre);
@@ -158,4 +164,15 @@ document.getElementById("slcOrdenar").addEventListener("change", function (e) {
 
 function capitalizar(palabra) {
   return palabra.charAt(0).toUpperCase() + palabra.slice(1);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                  Limpia tabla                                             */
+/* -------------------------------------------------------------------------- */
+function limpiaTabla() {
+  const tablaPokemones = document
+    .getElementById("idtablapokemones")
+    .getElementsByTagName("tbody")[0];
+  tablaPokemones.innerHTML = "";
+  muestraDatosTabla(data.pokemon);
 }

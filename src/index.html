@@ -5,15 +5,27 @@
   <meta charset="utf-8">
   <title>Data Lovers</title>
   <link rel="stylesheet" href="style.css" />
+
+  <link rel="shortcut icon" href="https://www.pokencyclopedia.info/sprites/spin-off/ico_shuffle/ico_shuffle_001.png">
   <!-- precarga de libreria -->
 
 </head>
 
 <body>
   <header>
-    <img
-      src="https://raw.githubusercontent.com/Laboratoria/DEV008-data-lovers/fd299dd48244c39ea36d464b69ca67568b9a7ab2/img/lineaPokemon.png"
-      alt="Imagen POKÉMON">
+    <table>
+      <tr>
+        <td>
+          <map name="mapa1">
+            <area id="pokemon" alt="Pulsa para regrasar a la p&aacute;gina principal." shape="RECT" coords="0,0,250,200"
+              href="#">
+          </map>
+          <img
+            src="https://raw.githubusercontent.com/Laboratoria/DEV008-data-lovers/fd299dd48244c39ea36d464b69ca67568b9a7ab2/img/lineaPokemon.png"
+            alt="Imagen POKÉMON." usemap="#mapa1">
+        </td>
+      </tr>
+    </table>
   </header>
   <div id="root"></div>
   <script src="main.js" type="module"></script>
@@ -51,6 +63,7 @@
       <table class="main-conteiner__table" id="idtablapokemones">
         <thead>
           <tr>
+            <th>N&uacute;mero</th>
             <th>Nombre</th>
             <th>Generaci&oacute;n</th>
             <th>Tipo</th>
