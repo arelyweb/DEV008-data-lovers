@@ -1,14 +1,19 @@
-import { obtenerPokemon, ordenarPokemon } from "./data.js";
+import { filtraPokemon, obtenerPokemon, ordenarPokemon } from "./data.js";
 // import data from './data/lol/lol.js';
 import data from "./data/pokemon/pokemon.js";
 // import data from './data/rickandmorty/rickandmorty.js';
+
+document.getElementById("pokemon").addEventListener("click", function() {
+  limpiaTabla();
+});
+
 
 /* -------------------------------------------------------------------------- */
 /*                Carga inicial de listado de pokemones                       */
 /* -------------------------------------------------------------------------- */
 
 window.addEventListener("load", function () {
-  muestraDatosTabla(data.pokemon);
+  limpiaTabla();
 });
 
 /* -------------------------------------------------------------------------- */
@@ -28,22 +33,12 @@ btnCerrar.onclick = function () {
 
 document.getElementById("idBotonBuscar").addEventListener("click", function () {
   const inputBusquedaNombre = document.getElementById("idInputBusqueda").value;
-  const tablaPokemones = document
-    .getElementById("idtablapokemones")
-    .getElementsByTagName("tbody")[0];
+  const tablaPokemones = document.getElementById("idtablapokemones").getElementsByTagName("tbody")[0];
 
-  const pattern = inputBusquedaNombre
-    .split("")
-    .map((x) => {
-      return `(?=.*${x})`; //?= pregunta . cualquier caracter excepto salto de linea * coincide con cero o mas instancias de un caracter
-    })
-    .join("");
-  const regex = new RegExp(`${pattern}`, "g");
-  const arrayPokemonBusquedaxNombre = data.pokemon.filter((pokemon) =>
-    pokemon.name.match(regex)
-  );
+  const pokemonesFiltrados = filtraPokemon(inputBusquedaNombre.toLowerCase());
+  
   tablaPokemones.innerHTML = "";
-  muestraDatosTabla(arrayPokemonBusquedaxNombre);
+  muestraDatosTabla(pokemonesFiltrados);
 });
 
 /* -------------------------------------------------------------------------- */
@@ -56,7 +51,11 @@ function muestraDatosTabla(arrayPokemones) {
   arrayPokemones.forEach((pokemon) => {
     // Crear un <tr>
     const tr = document.createElement("tr");
-    // Creamos el <td> de nombre y lo adjuntamos a tr
+    // Creamos el <td> de numero y lo adjuntamos a tr
+    const tdNumero = document.createElement("td");
+    tdNumero.textContent = pokemon.num; // el textContent del td es el nombre
+    tr.appendChild(tdNumero);
+    // Creamos el <td> de nombre 
     const tdNombre = document.createElement("td");
     tdNombre.textContent = pokemon.name; // el textContent del td es el nombre
     tr.appendChild(tdNombre);
@@ -97,7 +96,7 @@ function muestraDatosTabla(arrayPokemones) {
 function mostrarModal(event) {
   const nombrePokemon = event.target.value;
   const pokemon = obtenerPokemon(nombrePokemon);
-  document.getElementById("info").innerHTML = pokemon.name;
+  document.getElementById("info").innerHTML = pokemon.about;
   document.getElementById("generacion").innerHTML =
     pokemon.generation.num + ": " + pokemon.generation.name;
   document.getElementById("tipo").innerHTML = pokemon.type.join(", ");
@@ -111,6 +110,7 @@ function mostrarModal(event) {
   document.getElementById("imagenPokemon").src = pokemon.img;
   modalPokemon.style.display = "block";
 }
+
 /* -------------------------------------------------------------------------- */
 /*                  ordenamiento ascendente y descendente DOM                 */
 /* -------------------------------------------------------------------------- */
@@ -120,3 +120,12 @@ document.getElementById("slcOrdenar").addEventListener("change", function (e) {
   document.getElementById("cuerpoTabla").innerHTML = ""; //limpieza de tabla
   muestraDatosTabla(pokemonOrdenados); //llenado de tabla :)
 });
+
+/* -------------------------------------------------------------------------- */
+/*                  Limpia tabla                                             */
+/* -------------------------------------------------------------------------- */
+function limpiaTabla(){
+  const tablaPokemones = document.getElementById("idtablapokemones").getElementsByTagName("tbody")[0];
+  tablaPokemones.innerHTML = "";
+  muestraDatosTabla(data.pokemon);
+}
