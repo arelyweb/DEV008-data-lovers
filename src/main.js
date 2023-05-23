@@ -7,47 +7,43 @@ import {
 // import data from './data/lol/lol.js';
 import data from "./data/pokemon/pokemon.js";
 
-document.getElementById("pokemon").addEventListener("click", function () {
-  limpiaTabla();
-});
-
 /* -------------------------------------------------------------------------- */
-/*                Carga inicial de listado de pokemones                       */
+/*                             Variables globales                             */
 /* -------------------------------------------------------------------------- */
+const modalPokemon = document.getElementById("modalPokemon");
+let pokemones = [];
 
+/* ----------------------------- Carga de pagina ---------------------------- */
 window.addEventListener("load", function () {
   limpiaTabla();
 });
 
-//declaracion modal-Varoable global se usa en varias funciones
-const modalPokemon = document.getElementById("modalPokemon");
-
-/* -------------------------------------------------------------------------- */
-/*                    Filtra datos por nombre y muestra listado               */
-/* -------------------------------------------------------------------------- */
+/* ---------------------------- Reseteo de pagina --------------------------- */
+document.getElementById("pokemon").addEventListener("click", function () {
+  limpiaTabla();
+});
+/* --------------------- Busca los pókemones por nombre --------------------- */
 document.getElementById("idBotonBuscar").addEventListener("click", function () {
   const inputBusquedaNombre = document.getElementById("idInputBusqueda").value;
   const tablaPokemones = document
     .getElementById("idtablapokemones")
     .getElementsByTagName("tbody")[0];
-
   const pokemonesFiltrados = filtraPokemon(inputBusquedaNombre.toLowerCase());
-
+  pokemones = pokemonesFiltrados;
   tablaPokemones.innerHTML = "";
   muestraDatosTabla(pokemonesFiltrados);
 });
 
-/* -------------------------------------------------------------------------- */
-/*                              Muestra datos en listado                      */
-/* -------------------------------------------------------------------------- */
-
+/**
+ * Rellena la tabla con la lista de pokemones
+ * @param {*} arrayPokemones Lista de pokemones a mostrar
+ */
 function muestraDatosTabla(arrayPokemones) {
   const cuerpoTabla = document.querySelector("#cuerpoTabla");
-
   arrayPokemones.forEach((pokemon) => {
     // Crear un <tr>
     const tr = document.createElement("tr");
-    // Creamos el <td> de numero y lo adjuntamos a tr
+    // Creamos un <td> de numero
     const tdNumero = document.createElement("td");
     tdNumero.textContent = pokemon.num; // el textContent del td es el nombre
     tr.appendChild(tdNumero);
@@ -65,41 +61,39 @@ function muestraDatosTabla(arrayPokemones) {
     tdTipo.textContent = pokemon.type;
     tr.appendChild(tdTipo);
 
-    // El td del id
+    // Crea el <td> en donde contiene el boton de ver
     const tdVer = document.createElement("td");
 
-    //botton abrir modal
+    // Crea el <botton> en donde contiene el boton de ver
     const btnModal = document.createElement("button");
     btnModal.classList.add("buttonpill");
     btnModal.innerHTML = "Ver pokemón";
     btnModal.value = pokemon.name;
 
-    tdVer.appendChild(btnModal);
-
-    tr.appendChild(tdVer);
-
-    cuerpoTabla.appendChild(tr);
-    // Y el ciclo se repite hasta que se termina de recorrer todo el arreglo
-
-    //agregar evento click a la celda nombre
+    //agregar evento click al boton
     btnModal.addEventListener("click", function () {
       mostrarModal(this, "modalDetalle");
     });
+
+    //Agrega el boton al <td>
+    tdVer.appendChild(btnModal);
+    //Agrega el <td> al elemento tr
+    tr.appendChild(tdVer);
+    //Agrega el tr a la tabla
+    cuerpoTabla.appendChild(tr);
+
+    // Y el ciclo se repite hasta que se termina de recorrer todo el arreglo
   });
 }
 
-/* -------------------------------------------------------------------------- */
-/*                        Mostrar modal de estadistica                        */
-/* -------------------------------------------------------------------------- */
+/* --------------------- Llamar al modal de estadisticas -------------------- */
 document
   .getElementById("promedioPokemones")
   .addEventListener("click", function () {
     mostrarModal(this, "modalEstadistica");
   });
 
-/* -------------------------------------------------------------------------- */
-/*                                mostrar modal                               */
-/* -------------------------------------------------------------------------- */
+/* ---------------------------------- Modal --------------------------------- */
 function mostrarModal(e, tipoModal) {
   const informacion = document.getElementById("informacion");
   informacion.innerHTML = "";
@@ -157,7 +151,7 @@ document.getElementById("elipseCerrar").onclick = function () {
 /* -------------------------------------------------------------------------- */
 document.getElementById("slcOrdenar").addEventListener("change", function (e) {
   const tipoOrdenamiento = e.target.value;
-  const pokemonOrdenados = ordenarPokemon(tipoOrdenamiento);
+  const pokemonOrdenados = ordenarPokemon(tipoOrdenamiento, pokemones);
   document.getElementById("cuerpoTabla").innerHTML = ""; //limpieza de tabla
   muestraDatosTabla(pokemonOrdenados); //llenado de tabla :)
 });
@@ -170,9 +164,8 @@ function capitalizar(palabra) {
 /*                  Limpia tabla                                             */
 /* -------------------------------------------------------------------------- */
 function limpiaTabla() {
-  const tablaPokemones = document
-    .getElementById("idtablapokemones")
-    .getElementsByTagName("tbody")[0];
-  tablaPokemones.innerHTML = "";
-  muestraDatosTabla(data.pokemon);
+  pokemones = data.pokemon;
+  document.getElementById("cuerpoTabla").innerHTML = "";
+  //.getElementsByTagName("tbody")[0];
+  muestraDatosTabla(pokemones);
 }
