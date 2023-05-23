@@ -6,9 +6,15 @@ export const obtenerPokemon = (nombre) => {
   return data.pokemon.find((pokemon) => pokemon.name === nombre);
 };
 
-export const ordenarPokemon = (tipoOrdenamiento) => {
+/**
+ * Ordena una lista de pokemones
+ * @param {*} tipoOrdenamiento De que forma se van a ordenar 'asc' o 'desc'
+ * @param {*} arrayPokemones Array pokemones que se va a ordenar
+ * @returns lista de pokemones ordenadosß
+ */
+export const ordenarPokemon = (tipoOrdenamiento, arrayPokemones) => {
   if (tipoOrdenamiento === "asc") {
-    return data.pokemon.sort((a, b) => {
+    return arrayPokemones.sort((a, b) => {
       if (a.name > b.name) {
         return 1;
       }
@@ -18,7 +24,7 @@ export const ordenarPokemon = (tipoOrdenamiento) => {
       return 0;
     });
   } else {
-    return data.pokemon.sort((a, b) => {
+    return arrayPokemones.sort((a, b) => {
       if (a.name > b.name) {
         return -1;
       }
