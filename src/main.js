@@ -1,8 +1,9 @@
 import {
-  filtraPokemon,
+  filterData,
   obtenerPokemon,
   ordenarPokemon,
   contarTipoPokemon,
+  paginaPokemon,
 } from "./data.js";
 // import data from './data/lol/lol.js';
 import data from "./data/pokemon/pokemon.js";
@@ -27,9 +28,15 @@ document.getElementById("pokemon").addEventListener("click", function () {
 /* --------------------- Busca los pókemones por nombre --------------------- */
 document.getElementById("idBotonBuscar").addEventListener("click", function () {
   const inputBusquedaNombre = document.getElementById("idInputBusqueda").value;
-  const pokemonesFiltrados = filtraPokemon(inputBusquedaNombre.toLowerCase());
-  pokemones = pokemonesFiltrados;
-  muestraDatosTabla(pokemonesFiltrados);
+  const tablaPokemones = document
+    .getElementById("idtablapokemones")
+    .getElementsByTagName("tbody")[0];
+
+  const pokemonesFiltrados = filterData(inputBusquedaNombre.toLowerCase());
+
+  tablaPokemones.innerHTML = "";
+  const arrayPokmon = paginaPokemon(1, pokemonesFiltrados, true);
+  muestraDatosTabla(arrayPokmon.items);
 });
 
 function muestraDatosTabla(arrayPokemones) {
@@ -184,6 +191,7 @@ function mostrarModal(event) {
   )}`;
   document.getElementById("imagenPokemon").src = pokemonEncontrado.img;
 }
+
 /* -------------------------------------------------------------------------- */
 /*                              cierres de modal                              */
 /* -------------------------------------------------------------------------- */
@@ -193,6 +201,7 @@ document.getElementById("btnCerrar").onclick = function () {
 document.getElementById("elipseCerrar").onclick = function () {
   modalPokemon.style.display = "none";
 };
+
 /* -------------------------------------------------------------------------- */
 /*                  ordenamiento ascendente y descendente DOM                 */
 /* -------------------------------------------------------------------------- */
@@ -203,6 +212,40 @@ document.getElementById("slcOrdenar").addEventListener("change", function (e) {
   muestraDatosTabla(pokemonOrdenados); //llenado de tabla :)
 });
 
+/* -------------------------------------------------------------------------- */
+/*                  Capitaliza palabra                                        */
+/* -------------------------------------------------------------------------- */
+
 function capitalizar(palabra) {
   return palabra.charAt(0).toUpperCase() + palabra.slice(1);
 }
+function limpiaTabla() {
+  const tablaPokemones = document
+    .getElementById("idtablapokemones")
+    .getElementsByTagName("tbody")[0];
+  tablaPokemones.innerHTML = "";
+  document.getElementById("idInputBusqueda").value = "";
+  const arrayPokmon = paginaPokemon(1, null, false);
+  muestraDatosTabla(arrayPokmon.items);
+}
+
+/* -------------------------------------------------------------------------- */
+/*                 Paginacion de tabla principal                              */
+/* -------------------------------------------------------------------------- */
+const next = document.getElementById("next");
+const tablePokemones = document.getElementById("cuerpoTabla");
+let i = 1;
+
+next.addEventListener("click", function () {
+  i--;
+  const arrayPokmon = paginaPokemon(i, null, false);
+  tablePokemones.innerHTML = "";
+  muestraDatosTabla(arrayPokmon.items);
+});
+const back = document.getElementById("back");
+back.addEventListener("click", function () {
+  i++;
+  const arrayPokmon = paginaPokemon(i, null, false);
+  tablePokemones.innerHTML = "";
+  muestraDatosTabla(arrayPokmon.items);
+});

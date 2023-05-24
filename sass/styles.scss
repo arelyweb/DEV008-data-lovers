@@ -63,6 +63,7 @@ img {
         background-color: variables.$sl-blanco;
     }
    
+   
 }
 
 .input-wrapper {
@@ -189,4 +190,10 @@ img {
     .modal-content {
       width: 80%;
     }
+  }
+  
+  .paginado{
+    cursor: pointer;
+    display: flex;
+    padding: 5px;
   }

@@ -201,6 +201,11 @@ table tr:nth-child(even) {
     width: 80%;
   }
 }
+.paginado {
+  cursor: pointer;
+  display: flex;
+  padding: 5px;
+}
 
 canvas{
   width: 1000px;
