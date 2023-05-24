@@ -139,6 +139,14 @@ table tr:nth-child(even) {
   padding: 10px;
 }
 
+.contenedor-grafica {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
 .borde-cuadro {
   background: #f1dddd;
   border: 14px solid #4a3203;
@@ -192,6 +200,10 @@ table tr:nth-child(even) {
   .modal-content {
     width: 80%;
   }
+}
+
+canvas{
+  width: 1000px;
 }
 
 /*# sourceMappingURL=style.css.map */

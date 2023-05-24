@@ -15,31 +15,27 @@ let pokemones = [];
 
 /* ----------------------------- Carga de pagina ---------------------------- */
 window.addEventListener("load", function () {
-  limpiaTabla();
+  pokemones = data.pokemon;
+  muestraDatosTabla(pokemones);
 });
 
 /* ---------------------------- Reseteo de pagina --------------------------- */
 document.getElementById("pokemon").addEventListener("click", function () {
-  limpiaTabla();
+  pokemones = data.pokemon;
+  muestraDatosTabla(pokemones);
 });
 /* --------------------- Busca los pókemones por nombre --------------------- */
 document.getElementById("idBotonBuscar").addEventListener("click", function () {
   const inputBusquedaNombre = document.getElementById("idInputBusqueda").value;
-  const tablaPokemones = document
-    .getElementById("idtablapokemones")
-    .getElementsByTagName("tbody")[0];
   const pokemonesFiltrados = filtraPokemon(inputBusquedaNombre.toLowerCase());
   pokemones = pokemonesFiltrados;
-  tablaPokemones.innerHTML = "";
   muestraDatosTabla(pokemonesFiltrados);
 });
 
-/**
- * Rellena la tabla con la lista de pokemones
- * @param {*} arrayPokemones Lista de pokemones a mostrar
- */
 function muestraDatosTabla(arrayPokemones) {
   const cuerpoTabla = document.querySelector("#cuerpoTabla");
+  cuerpoTabla.innerHTML = ""; //Borramos lo que contenga la tabla
+
   arrayPokemones.forEach((pokemon) => {
     // Crear un <tr>
     const tr = document.createElement("tr");
@@ -71,9 +67,7 @@ function muestraDatosTabla(arrayPokemones) {
     btnModal.value = pokemon.name;
 
     //agregar evento click al boton
-    btnModal.addEventListener("click", function () {
-      mostrarModal(this, "modalDetalle");
-    });
+    btnModal.addEventListener("click", mostrarModal);
 
     //Agrega el boton al <td>
     tdVer.appendChild(btnModal);
@@ -86,56 +80,109 @@ function muestraDatosTabla(arrayPokemones) {
   });
 }
 
-/* --------------------- Llamar al modal de estadisticas -------------------- */
+/* --------------------- mostrar la grafica de pokemones -------------------- */
 document
   .getElementById("promedioPokemones")
-  .addEventListener("click", function () {
-    mostrarModal(this, "modalEstadistica");
+  .addEventListener("click", function (e) {
+    if (e.target.innerHTML === "Ver estadística") {
+      document.getElementById("promedioPokemones").innerHTML = "Ver tabla";
+
+      document.getElementById("idtablapokemones").style.display = "none";
+      const divGrafica = document.getElementById("grafica");
+      divGrafica.innerHTML = "";
+      divGrafica.style.display = "flex";
+
+      const estadistica = contarTipoPokemon();
+
+      const tipoPokemones = estadistica.map((item) => item.tipoPokemon);
+      const totalPokemones = estadistica.map((item) => item.total);
+
+      const ctx = document.createElement("canvas");
+      divGrafica.appendChild(ctx);
+
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: tipoPokemones,
+          datasets: [
+            {
+              label: "Total de pokemones",
+              data: totalPokemones,
+              borderWidth: 1,
+              backgroundColor: [
+                "rgba(255, 99, 132, 0.2)",
+                "rgba(255, 159, 64, 0.2)",
+                "rgba(255, 205, 86, 0.2)",
+                "rgba(75, 192, 192, 0.2)",
+                "rgba(54, 162, 235, 0.2)",
+                "rgba(153, 102, 255, 0.2)",
+                "rgba(201, 203, 207, 0.2)",
+              ],
+              borderColor: [
+                "rgb(255, 99, 132)",
+                "rgb(255, 159, 64)",
+                "rgb(255, 205, 86)",
+                "rgb(75, 192, 192)",
+                "rgb(54, 162, 235)",
+                "rgb(153, 102, 255)",
+                "rgb(201, 203, 207)",
+              ],
+            },
+          ],
+        },
+        options: {
+          scales: {
+            y: {
+              beginAtZero: true,
+            },
+          },
+        },
+      });
+    } else {
+      document.getElementById("promedioPokemones").innerHTML =
+        "Ver estadística";
+      document.getElementById("grafica").style.display = "none";
+      document.getElementById("idtablapokemones").style.display = "table";
+
+      document
+        .getElementById("idtablapokemones")
+        .classList.add("main-conteiner__table");
+    }
   });
 
 /* ---------------------------------- Modal --------------------------------- */
-function mostrarModal(e, tipoModal) {
+function mostrarModal(event) {
   const informacion = document.getElementById("informacion");
   informacion.innerHTML = "";
-  document.getElementById("imagenPokemon").src = "";
-
-  if (tipoModal === "modalDetalle") {
-    const nombrePokemon = e.value;
-    const pokemon = obtenerPokemon(nombrePokemon);
-
-    informacion.appendChild(
-      document.createElement("p")
-    ).innerHTML = `Nombre Pokemon: ${capitalizar(pokemon.name)}`;
-    informacion.appendChild(
-      document.createElement("p")
-    ).innerHTML = `Tipo: ${capitalizar(pokemon.type.join(", "))}`;
-    informacion.appendChild(
-      document.createElement("p")
-    ).innerHTML = `Generación: ${capitalizar(
-      pokemon.generation.num
-    )} - ${capitalizar(pokemon.generation.name)}`;
-    informacion.appendChild(
-      document.createElement("p")
-    ).innerHTML = `Rareza: ${capitalizar(pokemon["pokemon-rarity"])}`;
-    informacion.appendChild(
-      document.createElement("p")
-    ).innerHTML = `Debilidades: ${capitalizar(pokemon.weaknesses.join(", "))}`;
-    informacion.appendChild(
-      document.createElement("p")
-    ).innerHTML = `Resistencia: ${capitalizar(pokemon.resistant.join(", "))}`;
-    document.getElementById("imagenPokemon").src = pokemon.img;
-  } else {
-    const estadistica = contarTipoPokemon();
-
-    estadistica.forEach((elemento) => {
-      informacion.appendChild(
-        document.createElement("p")
-      ).innerHTML = `${capitalizar(elemento.tipoPokemon)}: ${
-        elemento.total
-      } pokemones`;
-    });
-  }
   modalPokemon.style.display = "block";
+  const nombrePokemon = event.target.value;
+  const pokemonEncontrado = obtenerPokemon(nombrePokemon);
+
+  informacion.appendChild(
+    document.createElement("p")
+  ).innerHTML = `Nombre Pokemon: ${capitalizar(pokemonEncontrado.name)}`;
+  informacion.appendChild(
+    document.createElement("p")
+  ).innerHTML = `Tipo: ${capitalizar(pokemonEncontrado.type.join(", "))}`;
+  informacion.appendChild(
+    document.createElement("p")
+  ).innerHTML = `Generación: ${capitalizar(
+    pokemonEncontrado.generation.num
+  )} - ${capitalizar(pokemonEncontrado.generation.name)}`;
+  informacion.appendChild(
+    document.createElement("p")
+  ).innerHTML = `Rareza: ${capitalizar(pokemonEncontrado["pokemon-rarity"])}`;
+  informacion.appendChild(
+    document.createElement("p")
+  ).innerHTML = `Debilidades: ${capitalizar(
+    pokemonEncontrado.weaknesses.join(", ")
+  )}`;
+  informacion.appendChild(
+    document.createElement("p")
+  ).innerHTML = `Resistencia: ${capitalizar(
+    pokemonEncontrado.resistant.join(", ")
+  )}`;
+  document.getElementById("imagenPokemon").src = pokemonEncontrado.img;
 }
 /* -------------------------------------------------------------------------- */
 /*                              cierres de modal                              */
@@ -158,14 +205,4 @@ document.getElementById("slcOrdenar").addEventListener("change", function (e) {
 
 function capitalizar(palabra) {
   return palabra.charAt(0).toUpperCase() + palabra.slice(1);
-}
-
-/* -------------------------------------------------------------------------- */
-/*                  Limpia tabla                                             */
-/* -------------------------------------------------------------------------- */
-function limpiaTabla() {
-  pokemones = data.pokemon;
-  document.getElementById("cuerpoTabla").innerHTML = "";
-  //.getElementsByTagName("tbody")[0];
-  muestraDatosTabla(pokemones);
 }

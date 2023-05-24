@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="style.css" />
 
   <link rel="shortcut icon" href="https://www.pokencyclopedia.info/sprites/spin-off/ico_shuffle/ico_shuffle_001.png">
-  <!-- precarga de libreria -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+  <!-- precarga de libreria -->
 </head>
 
 <body>
@@ -27,11 +28,9 @@
       </tr>
     </table>
   </header>
-  <div id="root"></div>
-  <script src="main.js" type="module"></script>
-  <!-- ----------------------------------------------------------------*/
-  /*-------------menuPrincipal----------------------------------------*/
-  /*------------------------------------------------------------------ -->
+  <!-- ----------------------------------------------------------------------- -->
+  <!--                             MENU PRINCIPAL                              -->
+  <!-- ----------------------------------------------------------------------- -->
   <main class="main-conteiner">
     <section class="main-conteiner__section-busqueda">
       <div class="main-conteiner__grid">
@@ -55,7 +54,7 @@
             <option class="button__option" value="asc">Ascedentemente</option>
             <option class="button__option" value="desc">Descendentemente</option>
           </select>
-          <button class="button prom" id="promedioPokemones">Promedio de pokemones</button>
+          <button class="button prom" id="promedioPokemones">Ver estadística</button>
         </div>
       </div>
     </section>
@@ -73,12 +72,20 @@
         <tbody id="cuerpoTabla">
 
         </tbody>
+      </table>
+      <div id="grafica" class="contenedor-grafica " style="display: none;">
+
+      </div>
     </section>
   </main>
-  <!-- ----------------------------------------------------------------*/
-  /*------------- Termina menuPrincipal---------------------------------*/
-  /*------------------------------------------------------------------ -->
-  <!-- ---------------------------- Modal pokemon ---------------------------- -->
+  <!-- ----------------------------------------------------------------------- -->
+  <!--                         TERMINA MENU PRINCIPAL                          -->
+  <!-- ----------------------------------------------------------------------- -->
+
+  <!-- ----------------------------------------------------------------------- -->
+  <!--                          INICIA MODAL POKEMON                           -->
+  <!-- ----------------------------------------------------------------------- -->
+
   <div id="modalPokemon" class="modal">
 
     <!-- Modal content -->
@@ -92,7 +99,9 @@
         </div>
       </div>
       <div class="contenedor-horizonal borde-cuadro">
+
         <div id="informacion" class="infoPokemon">
+
         </div>
         <div class="imgPokemon">
           <img id="imagenPokemon" src="" alt="">
@@ -110,15 +119,15 @@
     </div>
 
   </div>
-  <footer></footer>
-  <div id="root"></div>
+  <!-- ----------------------------------------------------------------------- -->
+  <!--                          TERMINA MODAL POKEMON                          -->
+  <!-- ----------------------------------------------------------------------- -->ß
   <script src="main.js" type="module"></script>
-  <scrip src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.min.js"
-    integrity="sha512-mlz/Fs1VtBou2TrUkGzX4VoGvybkD9nkeXWJm3rle0DPHssYYx4j+8kIS15T78ttGfmOjH0lLaBXGcShaVkdkg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer">
-    </script>
+
 
 </body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 
 
 
