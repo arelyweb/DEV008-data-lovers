@@ -193,5 +193,10 @@ table tr:nth-child(even) {
     width: 80%;
   }
 }
+.paginado {
+  cursor: pointer;
+  display: flex;
+  padding: 5px;
+}
 
 /*# sourceMappingURL=style.css.map */

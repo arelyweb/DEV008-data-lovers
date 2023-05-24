@@ -1,26 +1,37 @@
 import {
-  filtraPokemon,
+  filterData,
   obtenerPokemon,
   ordenarPokemon,
   contarTipoPokemon,
+  paginaPokemon,
 } from "./data.js";
 // import data from './data/lol/lol.js';
 import data from "./data/pokemon/pokemon.js";
 
-document.getElementById("pokemon").addEventListener("click", function () {
-  limpiaTabla();
-});
 
+//declaracion modal-Varoable global se usa en varias funciones
+const modalPokemon = document.getElementById("modalPokemon");
 /* -------------------------------------------------------------------------- */
 /*                Carga inicial de listado de pokemones                       */
 /* -------------------------------------------------------------------------- */
 
 window.addEventListener("load", function () {
+  
+  limpiaTabla();
+
+});
+/* -------------------------------------------------------------------------- */
+/*                logo pokemon limpia la tabla                                */
+/* -------------------------------------------------------------------------- */
+
+
+
+/* -------------------------------------------------------------------------- */
+/*                logo pokemon limpia la tabla                                */
+/* -------------------------------------------------------------------------- */
+document.getElementById("pokemon").addEventListener("click", function () {
   limpiaTabla();
 });
-
-//declaracion modal-Varoable global se usa en varias funciones
-const modalPokemon = document.getElementById("modalPokemon");
 
 /* -------------------------------------------------------------------------- */
 /*                    Filtra datos por nombre y muestra listado               */
@@ -31,10 +42,11 @@ document.getElementById("idBotonBuscar").addEventListener("click", function () {
     .getElementById("idtablapokemones")
     .getElementsByTagName("tbody")[0];
 
-  const pokemonesFiltrados = filtraPokemon(inputBusquedaNombre.toLowerCase());
+  const pokemonesFiltrados = filterData(inputBusquedaNombre.toLowerCase());
 
   tablaPokemones.innerHTML = "";
-  muestraDatosTabla(pokemonesFiltrados);
+  const arrayPokmon = paginaPokemon(1,pokemonesFiltrados,true);
+  muestraDatosTabla(arrayPokmon.items);
 });
 
 /* -------------------------------------------------------------------------- */
@@ -143,6 +155,7 @@ function mostrarModal(e, tipoModal) {
   }
   modalPokemon.style.display = "block";
 }
+
 /* -------------------------------------------------------------------------- */
 /*                              cierres de modal                              */
 /* -------------------------------------------------------------------------- */
@@ -152,6 +165,7 @@ document.getElementById("btnCerrar").onclick = function () {
 document.getElementById("elipseCerrar").onclick = function () {
   modalPokemon.style.display = "none";
 };
+
 /* -------------------------------------------------------------------------- */
 /*                  ordenamiento ascendente y descendente DOM                 */
 /* -------------------------------------------------------------------------- */
@@ -161,6 +175,10 @@ document.getElementById("slcOrdenar").addEventListener("change", function (e) {
   document.getElementById("cuerpoTabla").innerHTML = ""; //limpieza de tabla
   muestraDatosTabla(pokemonOrdenados); //llenado de tabla :)
 });
+
+/* -------------------------------------------------------------------------- */
+/*                  Capitaliza palabra                                        */
+/* -------------------------------------------------------------------------- */
 
 function capitalizar(palabra) {
   return palabra.charAt(0).toUpperCase() + palabra.slice(1);
@@ -174,5 +192,28 @@ function limpiaTabla() {
     .getElementById("idtablapokemones")
     .getElementsByTagName("tbody")[0];
   tablaPokemones.innerHTML = "";
-  muestraDatosTabla(data.pokemon);
+  document.getElementById("idInputBusqueda").value="";
+  const arrayPokmon = paginaPokemon(1,null,false);
+  muestraDatosTabla(arrayPokmon.items);
 }
+
+/* -------------------------------------------------------------------------- */
+/*                 Paginacion de tabla principal                              */
+/* -------------------------------------------------------------------------- */
+const next = document.getElementById("next");
+const tablePokemones = document.getElementById("cuerpoTabla");
+let i = 1;
+
+next.addEventListener("click",  function(){
+  i--;
+  const arrayPokmon = paginaPokemon(i,null,false);
+  tablePokemones.innerHTML = "";
+  muestraDatosTabla(arrayPokmon.items);
+})
+const back = document.getElementById("back");
+back.addEventListener("click",  function(){
+  i++;
+  const arrayPokmon = paginaPokemon(i,null,false);
+  tablePokemones.innerHTML = "";
+  muestraDatosTabla(arrayPokmon.items);
+})

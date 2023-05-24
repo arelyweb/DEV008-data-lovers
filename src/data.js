@@ -1,3 +1,4 @@
+//import pokemon from "./data/pokemon/pokemon.js";
 import data from "./data/pokemon/pokemon.js";
 
 // estas funciones son de ejemplo
@@ -52,7 +53,7 @@ export const contarTipoPokemon = () => {
 /*                     filtra por nombre y numero                 */
 /*                                                                */
 
-export const filtraPokemon = (nombreNumero) => {
+export const filterData = (nombreNumero) => {
   const pattern = nombreNumero
     .split("")
     .map((x) => {
@@ -65,4 +66,38 @@ export const filtraPokemon = (nombreNumero) => {
   ); //busca por nombre o numero
 
   return arrayPokemonBusquedaxNombre;
+};
+
+/*                                                                */
+/*                     filtra por pagina de datos               */
+/*                                                                */
+
+export const paginaPokemon = (pagina,arrayData,datos) => {
+
+  const porPagina = 10;
+  const offset = porPagina * (pagina - 1);
+  const arrayPaginado = [];
+  const numeral = 0;
+  let totalPages =0
+  let pokemonesPorPagina = [];
+
+  if(datos){
+    totalPages = Math.ceil(arrayData.length / porPagina);
+    pokemonesPorPagina = arrayData.slice(offset, porPagina * pagina);
+  }else{
+    totalPages = Math.ceil(data.pokemon.length / porPagina);
+    pokemonesPorPagina = data.pokemon.slice(offset, porPagina * pagina);
+  }
+  
+  for (let i = 0; i<totalPages;i++){
+    arrayPaginado[i]=numeral+i;
+  }
+  
+  return {
+    previousPage: pagina - 1 ? pagina - 1 : null,
+    nextPage: (totalPages > pagina) ? pagina + 1 : null,
+    total: data.pokemon.length,
+    totalPages: arrayPaginado,
+    items: pokemonesPorPagina
+  };
 };
