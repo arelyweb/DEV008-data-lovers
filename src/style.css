@@ -189,3 +189,16 @@ table tr:nth-child(even) {
 .btnActual {
   background: #dfecf8;
 }
+
+
+.contenedor-horizonal {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+canvas {
+  width: 1000px;
+}

@@ -90,6 +90,9 @@ document.getElementById("promedioPokemones").addEventListener("click", function 
   if (e.target.innerHTML === "Ver estadística") {
     document.getElementById("promedioPokemones").innerHTML = "Ver tabla";
     document.getElementById("idtablapokemones").style.display = "none";
+    document.getElementById("divPaginacion").style.display = "none";
+
+
 
     const divGrafica = document.getElementById("grafica");
     divGrafica.innerHTML = "";
@@ -145,6 +148,8 @@ document.getElementById("promedioPokemones").addEventListener("click", function 
       "Ver estadística";
     document.getElementById("grafica").style.display = "none";
     document.getElementById("idtablapokemones").style.display = "table";
+    document.getElementById("divPaginacion").style.display = "flex";
+
 
     document
       .getElementById("idtablapokemones")
@@ -187,9 +192,9 @@ function mostrarModal(event) {
 document.getElementById("btnCerrar").onclick = function () {
   modalPokemon.style.display = "none";
 };
-document.getElementById("elipseCerrar").onclick = function () {
-  modalPokemon.style.display = "none";
-};
+// document.getElementById("elipseCerrar").onclick = function () {
+//   modalPokemon.style.display = "none";
+// };
 
 
 
