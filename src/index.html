@@ -49,7 +49,7 @@
         </div>
         <div>
           <button class="button" id="idBotonBuscar">Buscar</button>
-          <label for="">Ordenar:</label>
+          <label for="">Ordenar nombre:</label>
           <select class="button" name="" id="slcOrdenar">
             <option selected="true" disabled="disabled">Seleccione tipo de ordenamiento</option>
             <option class="button__option" value="asc">Ascedentemente</option>
@@ -94,33 +94,24 @@
   <div id="modalPokemon" class="modal">
 
     <!-- Modal content -->
-    <div class="modal-content">
-      <div id="btnCerrar" class="close">&times;</div>
-      <p id="nombreTitulo">Pokemon</p>
-      <div class="contenerdor-elipse">
-        <div class="contenedor-elipse">
-          <div class="elipse"></div>
-          <div class="elipse"></div>
+
+    <div id="btnCerrar" class="close">&times;</div>
+    <p id="nombreTitulo">Pokemon</p>
+    <div class="carta-box">
+      <div class=" carta">
+        <div class="cara">
+          <div class="imgPokemon">
+            <img id="imagenPokemon" src="" alt="">
+          </div>
+          <img src="/img/cardPokemon_frente.png" width="200" height="250px">
+        </div>
+        <div class="cara detras">
+          <div id="informacion" class="infoPokemon">
+
+          </div>
+          <img src="/img/cardPokemon_atras.png" width="200" height="250px">
         </div>
       </div>
-      <div class="contenedor-horizonal borde-cuadro">
-
-        <div id="informacion" class="infoPokemon">
-
-        </div>
-        <div class="imgPokemon">
-          <img id="imagenPokemon" src="" alt="">
-        </div>
-      </div>
-      <div class="contenedor-horizonal">
-        <div id="elipseCerrar" class="elipse">
-          <img src="./icons/regresar.png" class="imgRegresar" alt="">
-        </div>
-        <div>
-          <img src="./icons/menu.png" alt="">
-        </div>
-      </div>
-
     </div>
 
   </div>
