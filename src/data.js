@@ -1,18 +1,12 @@
 //import pokemon from "./data/pokemon/pokemon.js";
 import data from "./data/pokemon/pokemon.js";
 
-// estas funciones son de ejemplo
-
+/* ----------------- busca un pokemon de acuerdo a su nombre ---------------- */
 export const obtenerPokemon = (nombre) => {
   return data.pokemon.find((pokemon) => pokemon.name === nombre);
 };
 
-/**
- * Ordena una lista de pokemones
- * @param {*} tipoOrdenamiento De que forma se van a ordenar 'asc' o 'desc'
- * @param {*} arrayPokemones Array pokemones que se va a ordenar
- * @returns lista de pokemones ordenadosß
- */
+/* ------------------ Ordena de forma ascendente y descente ----------------- */
 export const ordenarPokemon = (tipoOrdenamiento, arrayPokemones) => {
   if (tipoOrdenamiento === "asc") {
     return arrayPokemones.sort((a, b) => {
@@ -37,6 +31,7 @@ export const ordenarPokemon = (tipoOrdenamiento, arrayPokemones) => {
   }
 };
 
+/* ------------------- Obtiene el total y tipos de pokemon ------------------ */
 export const contarTipoPokemon = () => {
   const arrayTipoPokemon = [];
 
@@ -55,10 +50,17 @@ export const contarTipoPokemon = () => {
   return arrayTipoPokemon;
 };
 
-/*                                                                */
-/*                     filtra por nombre y numero                 */
-/*                                                                */
+/* ------------------- Aplica SLICE al array que se mande ------------------- */
+export const cortarArrayPokemones = (inicio, fin, arrayPokemones) => {
+  return arrayPokemones.slice(inicio, fin);
+};
 
+/* -------- Calcula cuaantas paginas se necesitan para la paginacion -------- */
+export const calcularPaginas = (tamañoArreglo, pokemonesPorPagina) => {
+  return Math.ceil(tamañoArreglo / pokemonesPorPagina);
+};
+
+/* ---------------- Filtra los pokemones por nombre o numero ---------------- */
 export const filterData = (nombreNumero) => {
   const pattern = nombreNumero
     .split("")
@@ -74,36 +76,39 @@ export const filterData = (nombreNumero) => {
   return arrayPokemonBusquedaxNombre;
 };
 
-/*                                                                */
-/*                     filtra por pagina de datos               */
-/*                                                                */
+/* -------------------------------------------------------------------------- */
+/*                            C A P I T A L I Z A R                           */
+/* -------------------------------------------------------------------------- */
+export const capitalizar = (palabra) => {
+  return palabra.charAt(0).toUpperCase() + palabra.slice(1);
+}
 
-export const paginaPokemon = (pagina,arrayData,datos) => {
 
-  const porPagina = 10;
-  const offset = porPagina * (pagina - 1);
-  const arrayPaginado = [];
-  const numeral = 0;
-  let totalPages =0
-  let pokemonesPorPagina = [];
+// export const paginaPokemon = (pagina, arrayData, datos) => {
+//   const porPagina = 10;
+//   const offset = porPagina * (pagina - 1);
+//   const arrayPaginado = [];
+//   const numeral = 0;
+//   let totalPages = 0;
+//   let pokemonesPorPagina = [];
 
-  if(datos){
-    totalPages = Math.ceil(arrayData.length / porPagina);
-    pokemonesPorPagina = arrayData.slice(offset, porPagina * pagina);
-  }else{
-    totalPages = Math.ceil(data.pokemon.length / porPagina);
-    pokemonesPorPagina = data.pokemon.slice(offset, porPagina * pagina);
-  }
-  
-  for (let i = 0; i<totalPages;i++){
-    arrayPaginado[i]=numeral+i;
-  }
-  
-  return {
-    previousPage: pagina - 1 ? pagina - 1 : null,
-    nextPage: (totalPages > pagina) ? pagina + 1 : null,
-    total: data.pokemon.length,
-    totalPages: arrayPaginado,
-    items: pokemonesPorPagina
-  };
-};
+//   if (datos) {
+//     totalPages = Math.ceil(arrayData.length / porPagina);
+//     pokemonesPorPagina = arrayData.slice(offset, porPagina * pagina);
+//   } else {
+//     totalPages = Math.ceil(data.pokemon.length / porPagina);
+//     pokemonesPorPagina = data.pokemon.slice(offset, porPagina * pagina);
+//   }
+
+//   for (let i = 0; i < totalPages; i++) {
+//     arrayPaginado[i] = numeral + i;
+//   }
+
+//   return {
+//     previousPage: pagina - 1 ? pagina - 1 : null,
+//     nextPage: totalPages > pagina ? pagina + 1 : null,
+//     total: data.pokemon.length,
+//     totalPages: arrayPaginado,
+//     items: pokemonesPorPagina,
+//   };
+// };

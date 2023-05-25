@@ -2,8 +2,8 @@
     "[javascript]": {
         "editor.maxTokenizationLineLength": 2500,
         "editor.formatOnSave": true,
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
-        "editor.tabSize": 2
+        "editor.defaultFormatter": "vscode.typescript-language-features",
+        "editor.tabSize": 2,
     },
     "[html]": {
         "editor.suggest.insertMode": "replace",
