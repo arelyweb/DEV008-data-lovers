@@ -42,7 +42,6 @@ table tr:nth-child(even) {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  height: 680px;
   left: 165px;
   right: 131px;
   top: 305px;
@@ -212,3 +211,12 @@ canvas{
 }
 
 /*# sourceMappingURL=style.css.map */
+.buttonPagination {
+  border: none;
+  background: #fff;
+  margin: 2px;
+}
+
+.btnActual {
+  background: #dfecf8;
+}
