@@ -69,8 +69,9 @@ export const filterData = (nombreNumero) => {
     })
     .join("");
   const regex = new RegExp(`${pattern}`, "g");
+ 
   const arrayPokemonBusquedaxNombre = data.pokemon.filter(
-    (pokemon) => pokemon.num.match(regex) || pokemon.name.match(regex)
+    (pokemon) => pokemon.num.match(regex) || pokemon.name.match(regex) 
   ); //busca por nombre o numero
 
   return arrayPokemonBusquedaxNombre;
