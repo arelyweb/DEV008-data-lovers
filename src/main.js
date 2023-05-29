@@ -5,7 +5,7 @@ import {
   contarTipoPokemon,
   calcularPaginas,
   cortarArrayPokemones,
-  capitalizar
+  capitalizar,
 } from "./data.js";
 // import data from './data/lol/lol.js';
 import data from "./data/pokemon/pokemon.js";
@@ -15,7 +15,7 @@ import data from "./data/pokemon/pokemon.js";
 /* -------------------------------------------------------------------------- */
 const modalPokemon = document.getElementById("modalPokemon");
 let pokemones = [];
-const pokemonesPorPagina = 15;
+const pokemonesPorPagina = 12;
 let pagina;
 let totalPaginas;
 
@@ -86,11 +86,18 @@ function muestraDatosTabla(arrayPokemones) {
 }
 
 /* ------------------- Muestra/Oculta grafica de pokemones ------------------ */
+
 document.getElementById("promedioPokemones").addEventListener("click", function (e) {
+
   if (e.target.innerHTML === "Ver estadística") {
     document.getElementById("promedioPokemones").innerHTML = "Ver tabla";
     document.getElementById("idtablapokemones").style.display = "none";
+
+    document.getElementById("menuBusqueda").style.display = "none";
+    document.getElementById("divBusqueda").style.display = "none";
     document.getElementById("divPaginacion").style.display = "none";
+    document.getElementById("estadistica").style.display = "flex";
+
 
 
 
@@ -101,6 +108,17 @@ document.getElementById("promedioPokemones").addEventListener("click", function 
     const estadistica = contarTipoPokemon();
     const tipoPokemones = estadistica.map((item) => item.tipoPokemon);
     const totalPokemones = estadistica.map((item) => item.total);
+
+
+
+    const conteoPokemon = estadistica.sort(function (a, b) {
+      return a.total - b.total;
+    });
+    document.getElementById("tipoPokemonMayor").innerHTML = `Tipo: ${capitalizar(conteoPokemon[conteoPokemon.length - 1].tipoPokemon)}`
+    document.getElementById("totalPokemonMayor").innerHTML = conteoPokemon[conteoPokemon.length - 1].total
+    document.getElementById("tipoPokemonMenor").innerHTML = `Tipo: ${capitalizar(conteoPokemon[0].tipoPokemon)}`
+    document.getElementById("totalPokemonMenor").innerHTML = conteoPokemon[0].total
+
 
     const ctx = document.createElement("canvas");
     divGrafica.appendChild(ctx);
@@ -149,6 +167,12 @@ document.getElementById("promedioPokemones").addEventListener("click", function 
     document.getElementById("grafica").style.display = "none";
     document.getElementById("idtablapokemones").style.display = "table";
     document.getElementById("divPaginacion").style.display = "flex";
+    document.getElementById("estadistica").style.display = "none";
+    document.getElementById("menuBusqueda").style.display = "block";
+    document.getElementById("divBusqueda").style.display = "block";
+
+
+
 
 
     document
@@ -158,12 +182,13 @@ document.getElementById("promedioPokemones").addEventListener("click", function 
 });
 
 /* ------------------ Ordenamiento ascendente y descendente ----------------- */
-document.getElementById("slcOrdenar").addEventListener("change", function (e) {
-  const tipoOrdenamiento = e.target.value;
+document.getElementById("slcOrdenar").addEventListener("change", function (event) {
+  const tipoOrdenamiento = event.target.value;
   const pokemonOrdenados = ordenarPokemon(tipoOrdenamiento, pokemones);
-  document.getElementById("cuerpoTabla").innerHTML = ""; //limpieza de tabla
   crearPaginacionInicial(pokemonOrdenados);
 });
+
+
 
 
 
@@ -203,8 +228,8 @@ document.getElementById("btnCerrar").onclick = function () {
 /* -------------------------------------------------------------------------- */
 
 /* ----------------------- Crea la paginacion inicial ----------------------- */
-function crearPaginacionInicial(data) {
-  pokemones = data; // Es el arreglo que se cargara
+function crearPaginacionInicial(pokemonesAPaginar) {
+  pokemones = pokemonesAPaginar; // Es el arreglo que se cargara
   pagina = 1; // Cuando se crea la paginación  la pagina por defecto es 1
   totalPaginas = calcularPaginas(pokemones.length, pokemonesPorPagina); //Calculamos cuantos botoncitos de paginacion vamos a necesitar
   crearBotonesPaginacion(); // Funcion que crea los botones con numeros

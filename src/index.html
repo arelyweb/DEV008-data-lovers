@@ -36,7 +36,7 @@
       <div class="main-conteiner__grid">
         <!--inicia grid-->
         <div>
-          <div class="input-wrapper">
+          <div id="divBusqueda" class="input-wrapper">
             <input type="search" id="idInputBusqueda" class="input-wrapper__input"
               placeholder="Buscar por nombre o n&uacute;mero" />
             <svg xmlns="http://www.w3.org/2000/svg" class="input-wrapper__input__input-icon" viewBox="0 0 20 20"
@@ -48,13 +48,15 @@
           </div>
         </div>
         <div>
-          <button class="button" id="idBotonBuscar">Buscar</button>
-          <label for="">Ordenar pokemon por nombre:</label>
-          <select class="button" name="" id="slcOrdenar">
-            <option selected="true" disabled="disabled">Seleccione tipo de ordenamiento</option>
-            <option class="button__option" value="asc">Ascedentemente</option>
-            <option class="button__option" value="desc">Descendentemente</option>
-          </select>
+          <div id="menuBusqueda">
+            <button class="button" id="idBotonBuscar">Buscar</button>
+            <label for="">Ordenar pokemon por nombre:</label>
+            <select class="button" name="" id="slcOrdenar">
+              <option selected="true" disabled="disabled">Seleccione tipo de ordenamiento</option>
+              <option class="button__option" value="asc">Ascedentemente</option>
+              <option class="button__option" value="desc">Descendentemente</option>
+            </select>
+          </div>
           <button class="button prom" id="promedioPokemones">Ver estadística</button>
         </div>
       </div>
@@ -74,8 +76,23 @@
 
         </tbody>
       </table>
-      <div id="grafica" class="contenedor-grafica " style="display: none;">
+      <div id="estadistica" class="containerGrafica" style="display: none;">
+        <div id="grafica" class="contenedor-grafica ">
+        </div>
+        <div class="coontenedorCard">
+          <div class="cardEstadistica">
+            <p id="tipoPokemonMayor">Generación kanto</p>
+            <p class="pTotal" id="totalPokemonMayor"></p>
+            <p>Pokemones</p>
 
+          </div>
+          <div class="cardEstadistica">
+            <p id="tipoPokemonMenor">Generación pikachu</p>
+            <p class="pTotal" id="totalPokemonMenor"></p>
+            <p>Pokemones</p>
+
+          </div>
+        </div>
       </div>
     </section>
 
@@ -89,7 +106,10 @@
     <button class="buttonPagination" id="btnAtras">Atrás</button>
     <div id="contenedorBotones"></div>
     <button class="buttonPagination" id="btnAdelante">Adelante</button>
+
   </div>
+
+
 
   <!-- ----------------------------------------------------------------*/
   /*------------- Termina menuPrincipal---------------------------------*/
