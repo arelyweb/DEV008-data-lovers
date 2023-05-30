@@ -13,8 +13,6 @@ header {
 
 img {
   width: 100%;
-  object-fit: cover;
-  object-position: bottom;
 }
 
 td {
@@ -30,7 +28,7 @@ table tr:nth-child(odd) {
 }
 
 table tr:nth-child(even) {
-  background-color: #F7F7F7;
+  background-color: #f7f7f7;
 }
 
 .main-conteiner {
@@ -53,10 +51,12 @@ table tr:nth-child(even) {
   grid-template-columns: 1fr 4fr;
 }
 .main-conteiner__table {
+  border-collapse: collapse;
+  border-spacing: 0;
   font-size: 16px;
   background-color: #F7F7F7;
   width: 100%;
-  border-radius: 8px;
+  border-radius: 10px;
 }
 
 .button {
@@ -65,10 +65,12 @@ table tr:nth-child(even) {
   padding: 10px 20px;
   border-radius: 6px;
   font-family: "ABeeZee", sans-serif;
+  outline: none;
 }
 .button__option {
   color: #77A6E1;
   background-color: rgb(255, 255, 255);
+  outline: none;
 }
 
 .input-wrapper {
@@ -110,6 +112,7 @@ table tr:nth-child(even) {
 }
 
 /* fin de propiedades de pagina principal*/
+/*propiedades de modal*/
 .modal {
   /* TODO: por default debe estar en none para que inicie oculto  */
   display: none;
@@ -123,63 +126,122 @@ table tr:nth-child(even) {
   background-color: rgba(0, 0, 0, 0.8);
   font-family: "Inconsolata", monospace;
 }
-
-.imgPokemon {
-  margin-right: 50px;
-  margin-bottom: 40px;
+.modal__carta-box {
+  padding: 0px 0px 0px 20px;
+  width: 100%;
+  height: 100%;
+  max-width: 1000px;
+  margin: 0px 0px 0px 420px;
+  justify-content: center;
 }
-
-.close {
-  color: black;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-@media screen and (max-width: 1000px) {
-  .modal-content {
-    width: 80%;
-  }
-}
-.carta-box {
-  width: 200px;
-  height: 550px;
-  position: relative;
-  perspective: 1000px;
-}
-
-.carta-box:hover .carta {
-  transform: rotateY(-180deg);
-}
-
-.carta {
+.modal__carta-box__carta {
   transform-style: preserve-3d;
   transition: all 1s linear;
-}
-
-.cara {
-  position: absolute;
+  width: 100%;
+  height: 100%;
+  max-width: 550px;
+  position: relative;
+  transform: rotateY(0deg);
   backface-visibility: hidden;
 }
-
-.cara.detras {
-  transform: rotateY(-180deg);
+.modal__carta-box__carta:hover {
+  transform: rotateY(180deg);
 }
-
-.paginado {
-  cursor: pointer;
+.modal__carta-box__carta__cara {
+  width: 80%;
+  height: 80%;
+  background: url("https://raw.githubusercontent.com/Luzgalan/DEV008-data-lovers/feature/paginacion-table/img/cardPokemon_frente.png");
+  background-size: cover;
+}
+.modal__carta-box__carta__cara__nomPokemon {
+  padding: 65px;
+}
+.modal__carta-box__carta__cara__imgPokemon {
+  padding: 0px 0px 0px 70px;
+  width: 60%;
+  height: 60%;
+}
+.modal__carta-box__carta__cara__info {
+  padding: 50px;
+  float: right;
+}
+.modal__carta-box__carta__caradetras {
+  width: 80%;
+  height: 80%;
+  background-image: url("https://raw.githubusercontent.com/Luzgalan/DEV008-data-lovers/feature/paginacion-table/img/cardPokemon_atras.png");
+  background-size: cover;
+  transform: rotateY(180deg);
+  position: absolute;
+  top: 0;
+  backface-visibility: hidden;
+}
+.modal__carta-box__carta__caradetras__flexbox {
   display: flex;
-  padding: 5px;
+  justify-content: space-between;
+}
+.modal__carta-box__carta__caradetras__flexbox__nomPokemon {
+  padding: 65px;
+}
+.modal__carta-box__carta__caradetras__flexbox__close {
+  padding: 26px;
+}
+.modal__carta-box__carta__caradetras__flexbox__close__closeButton {
+  font-size: 15px;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
+.modal__carta-box__carta__caradetras__infoPokemon {
+  padding: 2em;
 }
 
-/*# sourceMappingURL=style.css.map */
+@media screen and (max-width: 800px) {
+  .modal__carta-box {
+    max-width: 800px;
+    margin: 0px 0px 0px 120px;
+  }
+  .modal__carta-box__carta {
+    width: 50%;
+    height: 50%;
+    max-width: 800px;
+  }
+  .modal__carta-box__carta__cara {
+    width: 80%;
+    height: 80%;
+  }
+  .modal__carta-box__carta__cara__nomPokemon {
+    padding: 25px;
+  }
+  .modal__carta-box__carta__cara__imgPokemon {
+    padding: 0px 0px 0px 30px;
+    width: 60%;
+    height: 60%;
+  }
+  .modal__carta-box__carta__cara__info {
+    padding: 30px;
+  }
+  .modal__carta-box__carta__caradetras {
+    width: 80%;
+    height: 80%;
+  }
+  .modal__carta-box__carta__caradetras__flexbox__nomPokemon {
+    padding: 10px;
+  }
+  .modal__carta-box__carta__caradetras__flexbox__close {
+    padding: 10px;
+  }
+  .modal__carta-box__carta__caradetras__infoPokemon {
+    padding: 5px;
+    font-size: 9px;
+  }
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+}
+/* fin de propiedades modal*/
+
 .buttonPagination {
   border: none;
   background: #fff;
@@ -189,7 +251,6 @@ table tr:nth-child(even) {
 .btnActual {
   background: #dfecf8;
 }
-
 
 .contenedor-horizonal {
   display: flex;
@@ -202,3 +263,5 @@ table tr:nth-child(even) {
 canvas {
   width: 1000px;
 }
+
+/*# sourceMappingURL=style.css.map */

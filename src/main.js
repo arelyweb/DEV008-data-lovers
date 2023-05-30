@@ -15,7 +15,7 @@ import data from "./data/pokemon/pokemon.js";
 /* -------------------------------------------------------------------------- */
 const modalPokemon = document.getElementById("modalPokemon");
 let pokemones = [];
-const pokemonesPorPagina = 15;
+const pokemonesPorPagina = 10;
 let pagina;
 let totalPaginas;
 
@@ -179,19 +179,23 @@ function mostrarModal(event) {
   const nombrePokemon = event.target.value;
   const pokemonEncontrado = obtenerPokemon(nombrePokemon);
 
-  informacion.appendChild(document.createElement("p")).innerHTML = `Nombre Pokemon: ${capitalizar(pokemonEncontrado.name)}`;
+  document.getElementById("nombrePokemon").innerHTML = pokemonEncontrado.name.toUpperCase();
+  document.getElementById("nombrePokemontwo").innerHTML = pokemonEncontrado.name.toUpperCase();
+  informacion.appendChild(document.createElement("p")).innerHTML = `Acerca de: ${capitalizar(pokemonEncontrado.about)}`;
   informacion.appendChild(document.createElement("p")).innerHTML = `Tipo: ${capitalizar(pokemonEncontrado.type.join(", "))}`;
-  informacion.appendChild(document.createElement("p")).innerHTML = `Generación: ${capitalizar(pokemonEncontrado.generation.num)} - ${capitalizar(pokemonEncontrado.generation.name)}`;
-  informacion.appendChild(document.createElement("p")).innerHTML = `Rareza: ${capitalizar(pokemonEncontrado["pokemon-rarity"])}`;
+  informacion.appendChild(document.createElement("p")).innerHTML = `Movimientos rápidos: ${pokemonEncontrado["quick-move"].map(function (move) { return capitalizar(move.name) })}`;
+  informacion.appendChild(document.createElement("p")).innerHTML = `Ataque especial: ${pokemonEncontrado["special-attack"].map(function (move) { return capitalizar(move.name) })}`;
   informacion.appendChild(document.createElement("p")).innerHTML = `Debilidades: ${capitalizar(pokemonEncontrado.weaknesses.join(", "))}`;
   informacion.appendChild(document.createElement("p")).innerHTML = `Resistencia: ${capitalizar(pokemonEncontrado.resistant.join(", "))}`;
 
   document.getElementById("imagenPokemon").src = pokemonEncontrado.img;
 }
 /* ----------------------- Botones de cierre del modal ---------------------- */
+
 document.getElementById("btnCerrar").onclick = function () {
   modalPokemon.style.display = "none";
 };
+
 // document.getElementById("elipseCerrar").onclick = function () {
 //   modalPokemon.style.display = "none";
 // };

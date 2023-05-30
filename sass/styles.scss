@@ -11,8 +11,6 @@ header {
 
 img {
   width: 100%;
-  object-fit: cover;
-  object-position: bottom;
 }
 
 td {
@@ -51,10 +49,13 @@ table tr:nth-child(even) {
     grid-template-columns: 1fr 4fr;
   }
   &__table {
+    border-collapse: collapse;
+    border-spacing: 0;
     font-size: 16px;
     background-color: variables.$sl-fondocoltable;
     width: 100%;
-    border-radius: 8px;
+    border-radius: 10px;
+
   }
 }
 
@@ -64,9 +65,11 @@ table tr:nth-child(even) {
   padding: 10px 20px;
   border-radius: 6px;
   font-family: variables.$tp-aaeezee;
+  outline: none;
   &__option {
     color: variables.$sl-bluepurple;
     background-color: variables.$sl-blanco;
+    outline: none;
   }
 }
 
@@ -110,6 +113,7 @@ table tr:nth-child(even) {
 }
 /* fin de propiedades de pagina principal*/
 
+/*propiedades de modal*/
 .modal {
   /* TODO: por default debe estar en none para que inicie oculto  */
   display: none;
@@ -122,60 +126,150 @@ table tr:nth-child(even) {
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.8);
   font-family: "Inconsolata", monospace;
+  &__carta-box {
+    padding: 0px 0px 0px 20px;
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+    margin: 0px 0px 0px 420px;
+    justify-content: center;
+    &__carta {
+       transform-style: preserve-3d;
+       transition: all 1s linear;
+       width: 100%;
+       height: 100%;
+       max-width: 550px;
+       position: relative;
+       transform: rotateY(0deg);
+       backface-visibility: hidden;
+       &:hover{
+         transform: rotateY(180deg);
+       }
+       &__cara{
+         width: 80%;
+         height: 80%;
+         background: url("https://raw.githubusercontent.com/Luzgalan/DEV008-data-lovers/feature/paginacion-table/img/cardPokemon_frente.png");
+         background-size: cover;
+         &__nomPokemon {
+           padding: 65px ;
+         }
+         &__imgPokemon {
+           padding: 0px 0px 0px 70px;
+           width: 60%;
+           height: 60%;
+         }
+         &__info{
+          padding: 50px ;
+          float: right;
+        }
+       }
+       &__caradetras{
+         width: 80%;
+         height: 80%;
+         background-image: url("https://raw.githubusercontent.com/Luzgalan/DEV008-data-lovers/feature/paginacion-table/img/cardPokemon_atras.png");
+         background-size: cover;
+         transform: rotateY(180deg);
+         position: absolute;
+         top: 0;
+         backface-visibility: hidden;
+         &__flexbox{
+           display: flex;
+           justify-content: space-between;
+           &__nomPokemon {
+            padding: 65px ;
+           }
+           &__close {
+             padding: 26px ;
+             &__closeButton{
+               font-size: 15px;
+               background: none;
+               border: none;
+               outline: none;
+               cursor: pointer;
+             }
+           }
+         }
+         &__infoPokemon{
+           padding: 2em;
+         }
+       }
+     }
+   }
 }
 
-.imgPokemon {
-  margin-right: 50px;
-  margin-bottom: 40px;
-}
-
-.close {
-  color: black;
-  float: right;
-  font-size: 28px;
-  font-weight: bold;
-}
-
-.close:hover,
-.close:focus {
-  color: black;
-  text-decoration: none;
-  cursor: pointer;
-}
-
-@media screen and (max-width: 1000px) {
-  .modal-content {
-    width: 80%;
+@media screen and (max-width: 800px) {
+  .modal {
+    &__carta-box {
+      max-width: 800px;
+      margin: 0px 0px 0px 120px;
+      &__carta {
+         width: 50%;
+         height: 50%;
+         max-width: 800px;
+         &__cara{
+           width: 80%;
+           height: 80%;
+            &__nomPokemon {
+              padding: 25px ;
+            }
+            &__imgPokemon {
+              padding: 0px 0px 0px 30px;
+              width: 60%;
+              height: 60%;
+            }
+            &__info{
+              padding: 30px ;
+            }
+          }
+         &__caradetras{
+            width: 80%;
+            height: 80%;
+            &__flexbox{
+              &__nomPokemon {
+                padding: 10px ;
+              }
+              &__close {
+                padding: 10px ;
+              }
+            }
+            &__infoPokemon{
+              padding:5px;
+              font-size: 9px;
+            }
+         }
+       }
+     }
   }
+
+  table {
+    display: block;
+    overflow-x: auto;
+  }
+  
 }
 
-.carta-box {
-  width: 200px;
-  height: 550px;
-  position: relative;
-  perspective: 1000px;
+/* fin de propiedades modal*/
+
+/*# sourceMappingURL=style.css.map */
+.buttonPagination {
+  border: none;
+  background: #fff;
+  margin: 2px;
 }
 
-.carta-box:hover .carta {
-  transform: rotateY(-180deg);
+.btnActual {
+  background: #dfecf8;
 }
 
-.carta {
-  transform-style: preserve-3d;
-  transition: all 1s linear;
-}
 
-.cara {
-  position: absolute;
-  backface-visibility: hidden;
-}
-
-.cara.detras {
-  transform: rotateY(-180deg);
-}
-
-.paginado {
-  cursor: pointer;
+.contenedor-horizonal {
   display: flex;
-  padding: 5px;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+}
+
+canvas {
+  width: 1000px;
 }

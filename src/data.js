@@ -62,18 +62,19 @@ export const calcularPaginas = (tamañoArreglo, pokemonesPorPagina) => {
 
 /* ---------------- Filtra los pokemones por nombre o numero ---------------- */
 export const filterData = (nombreNumero) => {
-  const pattern = nombreNumero
+  const sinEsp = nombreNumero.replace(/\s/g, '');
+  const sinCreS = sinEsp.replace(/[^a-zA-Z0-9 ]/g, '');
+  const pattern = sinCreS
     .split("")
     .map((x) => {
       return `(?=.*${x})`; //?= pregunta . cualquier caracter excepto salto de linea * coincide con cero o mas instancias de un caracter (?=.*p)(?=.*i)(?=.*k)(?=.*a)
     })
     .join("");
   const regex = new RegExp(`${pattern}`, "g");
- 
-  const arrayPokemonBusquedaxNombre = data.pokemon.filter(
-    (pokemon) => pokemon.num.match(regex) || pokemon.name.match(regex) 
-  ); //busca por nombre o numero
 
+  const arrayPokemonBusquedaxNombre = data.pokemon.filter(
+    (pokemon) => pokemon.num.match(regex) || pokemon.name.match(regex)
+  ); //busca por nombre o numero
   return arrayPokemonBusquedaxNombre;
 };
 

@@ -60,6 +60,7 @@
       </div>
     </section>
     <section class="main-conteiner__section-table">
+
       <table class="main-conteiner__table" id="idtablapokemones">
         <thead>
           <tr>
@@ -99,21 +100,33 @@
 
     <!-- Modal content -->
 
-    <div id="btnCerrar" class="close">&times;</div>
-    <p id="nombreTitulo">Pokemon</p>
-    <div class="carta-box">
-      <div class=" carta">
-        <div class="cara">
-          <div class="imgPokemon">
-            <img id="imagenPokemon" src="" alt="">
-          </div>
-          <img src="/img/cardPokemon_frente.png" width="200" height="250px">
-        </div>
-        <div class="cara detras">
-          <div id="informacion" class="infoPokemon">
 
+    <p id="nombreTitulo">Pokemon</p>
+    <div class="modal__carta-box">
+      <div class="modal__carta-box__carta">
+        <div class="modal__carta-box__carta__cara">
+          <div class="modal__carta-box__carta__cara__nomPokemon">
+            <label id="nombrePokemon" for=""></label>
           </div>
-          <img src="/img/cardPokemon_atras.png" width="200" height="250px">
+          <div class="modal__carta-box__carta__cara__imgPokemon">
+            <img id="imagenPokemon">
+          </div>
+          <div class="modal__carta-box__carta__cara__info">
+            <label for="">Más info</label>
+          </div>
+        </div>
+        <div class="modal__carta-box__carta__caradetras">
+          <div class="modal__carta-box__carta__caradetras__flexbox">
+            <div class="modal__carta-box__carta__caradetras__flexbox__nomPokemon">
+              <label id="nombrePokemontwo" for=""></label>
+            </div>
+            <div class="modal__carta-box__carta__caradetras__flexbox__close">
+              <button type="button" class="modal__carta-box__carta__caradetras__flexbox__close__closeButton"
+                id="btnCerrar"><img src="./icons/close.png" alt=""></button>
+            </div>
+          </div>
+          <div id="informacion" class="modal__carta-box__carta__caradetras__infoPokemon">
+          </div>
         </div>
       </div>
     </div>
