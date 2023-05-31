@@ -5,8 +5,6 @@ describe('filterData', () => {
   it('is a function', () => {
     expect(typeof filterData).toBe('function');
   });
-
-
   it("debe retornar el resultado igual a la busqueda por nombre", () => {
     expect(filterData("pikachu")).toEqual(
       expect.arrayContaining([
@@ -16,7 +14,6 @@ describe('filterData', () => {
       ])
     )
   });
-
   it("debe retornar el resultado parecido de la busqueda por nombre", () => {
     expect(filterData("ivys")).toEqual(
       expect.arrayContaining([
@@ -26,7 +23,6 @@ describe('filterData', () => {
       ])
     )
   });
-
   it("debe retornar el resultado igual de la busqueda por numero", () => {
     expect(filterData("076")).toEqual(
       expect.arrayContaining([
@@ -36,15 +32,12 @@ describe('filterData', () => {
       ])
     )
   });
-
 });
 
 describe('contarTipoPokemon', () => {
-
   it('is a function', () => {
     expect(typeof contarTipoPokemon).toBe('function');
   });
-
   it("retorna el conteo de tipo de pokemon ", () => {
     expect(contarTipoPokemon()).toEqual(
       expect.arrayContaining([
@@ -55,19 +48,15 @@ describe('contarTipoPokemon', () => {
       ])
     )
   });
-
 });
 
 describe('calcularPaginas', () => {
-
   it('is a function', () => {
     expect(typeof calcularPaginas).toBe('function');
   });
-
   it("retorna el numero de paginas", () => {
     expect(calcularPaginas(250, 10)).toBe(25)
   });
-
 });
 
 describe('cortarArrayPokemones', () => {
