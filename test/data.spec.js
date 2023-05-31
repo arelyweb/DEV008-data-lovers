@@ -60,11 +60,9 @@ describe('calcularPaginas', () => {
 });
 
 describe('cortarArrayPokemones', () => {
-
   it('is a function', () => {
     expect(typeof cortarArrayPokemones).toBe('function');
   });
-
   it("retorna la parte del array especifica", () => {
     const arraypokemones = [
       {
@@ -1031,7 +1029,6 @@ describe('cortarArrayPokemones', () => {
         }
       }
     ];
-
     const arraypokemonesTres = [
       {
         "num": "011",
