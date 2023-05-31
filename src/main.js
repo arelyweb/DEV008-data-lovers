@@ -5,7 +5,7 @@ import {
   contarTipoPokemon,
   calcularPaginas,
   cortarArrayPokemones,
-  capitalizar
+  capitalizar,
 } from "./data.js";
 // import data from './data/lol/lol.js';
 import data from "./data/pokemon/pokemon.js";
@@ -15,8 +15,8 @@ import data from "./data/pokemon/pokemon.js";
 /* -------------------------------------------------------------------------- */
 const modalPokemon = document.getElementById("modalPokemon");
 let pokemones = [];
-const pokemonesPorPagina = 10;
-let pagina;
+const pokemonesPorPagina = 12;
+let paginaActual;
 let totalPaginas;
 
 
@@ -86,11 +86,18 @@ function muestraDatosTabla(arrayPokemones) {
 }
 
 /* ------------------- Muestra/Oculta grafica de pokemones ------------------ */
+
 document.getElementById("promedioPokemones").addEventListener("click", function (e) {
+
   if (e.target.innerHTML === "Ver estadística") {
     document.getElementById("promedioPokemones").innerHTML = "Ver tabla";
     document.getElementById("idtablapokemones").style.display = "none";
+
+    document.getElementById("menuBusqueda").style.display = "none";
+    document.getElementById("divBusqueda").style.display = "none";
     document.getElementById("divPaginacion").style.display = "none";
+    document.getElementById("estadistica").style.display = "flex";
+
 
 
 
@@ -101,6 +108,17 @@ document.getElementById("promedioPokemones").addEventListener("click", function 
     const estadistica = contarTipoPokemon();
     const tipoPokemones = estadistica.map((item) => item.tipoPokemon);
     const totalPokemones = estadistica.map((item) => item.total);
+
+
+
+    const conteoPokemon = estadistica.sort(function (a, b) {
+      return a.total - b.total;
+    });
+    document.getElementById("tipoPokemonMayor").innerHTML = `Tipo: ${capitalizar(conteoPokemon[conteoPokemon.length - 1].tipoPokemon)}`
+    document.getElementById("totalPokemonMayor").innerHTML = conteoPokemon[conteoPokemon.length - 1].total
+    document.getElementById("tipoPokemonMenor").innerHTML = `Tipo: ${capitalizar(conteoPokemon[0].tipoPokemon)}`
+    document.getElementById("totalPokemonMenor").innerHTML = conteoPokemon[0].total
+
 
     const ctx = document.createElement("canvas");
     divGrafica.appendChild(ctx);
@@ -149,6 +167,12 @@ document.getElementById("promedioPokemones").addEventListener("click", function 
     document.getElementById("grafica").style.display = "none";
     document.getElementById("idtablapokemones").style.display = "table";
     document.getElementById("divPaginacion").style.display = "flex";
+    document.getElementById("estadistica").style.display = "none";
+    document.getElementById("menuBusqueda").style.display = "block";
+    document.getElementById("divBusqueda").style.display = "block";
+
+
+
 
 
     document
@@ -158,12 +182,13 @@ document.getElementById("promedioPokemones").addEventListener("click", function 
 });
 
 /* ------------------ Ordenamiento ascendente y descendente ----------------- */
-document.getElementById("slcOrdenar").addEventListener("change", function (e) {
-  const tipoOrdenamiento = e.target.value;
+document.getElementById("slcOrdenar").addEventListener("change", function (event) {
+  const tipoOrdenamiento = event.target.value;
   const pokemonOrdenados = ordenarPokemon(tipoOrdenamiento, pokemones);
-  document.getElementById("cuerpoTabla").innerHTML = ""; //limpieza de tabla
   crearPaginacionInicial(pokemonOrdenados);
 });
+
+
 
 
 
@@ -207,25 +232,23 @@ document.getElementById("btnCerrar").onclick = function () {
 /* -------------------------------------------------------------------------- */
 
 /* ----------------------- Crea la paginacion inicial ----------------------- */
-function crearPaginacionInicial(data) {
-  pokemones = data; // Es el arreglo que se cargara
-  pagina = 1; // Cuando se crea la paginación  la pagina por defecto es 1
+function crearPaginacionInicial(pokemonesAPaginar) {
+  pokemones = pokemonesAPaginar; // Es el arreglo que se cargara
+  paginaActual = 1; // Cuando se crea la paginación  la pagina por defecto es 1
   totalPaginas = calcularPaginas(pokemones.length, pokemonesPorPagina); //Calculamos cuantos botoncitos de paginacion vamos a necesitar
   crearBotonesPaginacion(); // Funcion que crea los botones con numeros
-  const pokemonesAMostrar = cortarArrayPokemones(pokemonesPorPagina * (pagina - 1), pokemonesPorPagina * pagina, pokemones);//Vamos por los primeros pokemones
+  const pokemonesAMostrar = cortarArrayPokemones(pokemonesPorPagina * (paginaActual - 1), pokemonesPorPagina * paginaActual, pokemones);//Vamos por los primeros pokemones
   muestraDatosTabla(pokemonesAMostrar); //Mostramos los pokemones en la tabla
-  pagina = pagina + 1;//Aumentamos la pagina
-
   //Pintamos el boton
   pintarCuadrito()
 }
 
 /* --------------------- Evento clic del boton Adelante --------------------- */
 document.getElementById("btnAdelante").addEventListener("click", () => {
-  if (pagina <= totalPaginas) {
-    const pokemonesAMostrar = cortarArrayPokemones(pokemonesPorPagina * (pagina - 1), pokemonesPorPagina * pagina, pokemones);
+  if (paginaActual < totalPaginas) {
+    paginaActual = paginaActual + 1;
+    const pokemonesAMostrar = cortarArrayPokemones(pokemonesPorPagina * (paginaActual - 1), pokemonesPorPagina * paginaActual, pokemones);
     muestraDatosTabla(pokemonesAMostrar);
-    pagina = pagina + 1;
     //Pintamos el boton
     pintarCuadrito()
   }
@@ -233,9 +256,9 @@ document.getElementById("btnAdelante").addEventListener("click", () => {
 
 /* ----------------------- Evento clic del boton Atras ---------------------- */
 document.getElementById("btnAtras").addEventListener("click", () => {
-  if (pagina > 2) {
-    pagina = pagina - 1;
-    const pokemonesAMostrar = cortarArrayPokemones(pokemonesPorPagina * (pagina - 2), pokemonesPorPagina * (pagina - 1), pokemones);
+  if (paginaActual > 1) {
+    paginaActual = paginaActual - 1;
+    const pokemonesAMostrar = cortarArrayPokemones(pokemonesPorPagina * (paginaActual - 1), pokemonesPorPagina * (paginaActual), pokemones);
     muestraDatosTabla(pokemonesAMostrar);
     //Pintamos el boton
     pintarCuadrito()
@@ -246,9 +269,9 @@ document.getElementById("btnAtras").addEventListener("click", () => {
 function crearBotonesPaginacion() {
   const contenedorBotones = document.getElementById("contenedorBotones");
   contenedorBotones.innerHTML = "";
-  for (let i = 0; i < totalPaginas; i++) {
+  for (let i = 1; i <= totalPaginas; i++) {
     const boton = document.createElement("button");
-    boton.innerHTML = i + 1;
+    boton.innerHTML = i;
     boton.id = 'btn' + boton.innerHTML
     boton.classList.add("buttonPagination")
     boton.addEventListener("click", cargarPokemonesPorPagina);
@@ -258,19 +281,17 @@ function crearBotonesPaginacion() {
 
 /* ------ Funcion de cada uno de los botones de las paginas disponibles ----- */
 function cargarPokemonesPorPagina(e) {
-  const paginaSeleccionada = parseInt(e.target.innerHTML);
-  const pokemonesAMostrar = cortarArrayPokemones(pokemonesPorPagina * (paginaSeleccionada - 1), pokemonesPorPagina * paginaSeleccionada, pokemones);
+  paginaActual = parseInt(e.target.innerHTML);
+  const pokemonesAMostrar = cortarArrayPokemones(pokemonesPorPagina * (paginaActual - 1), pokemonesPorPagina * paginaActual, pokemones);
   muestraDatosTabla(pokemonesAMostrar);
-  pagina = paginaSeleccionada + 1;
   pintarCuadrito();
 }
 
 function pintarCuadrito() {
-  for (let i = 0; i < totalPaginas; i++) {
-    document.getElementById(`btn${i + 1}`).classList.remove("btnActual")
-
+  for (let i = 1; i <= totalPaginas; i++) {
+    document.getElementById(`btn${i}`).classList.remove("btnActual")
   }
-  document.getElementById(`btn${pagina - 1}`).classList.add("btnActual")
+  document.getElementById(`btn${paginaActual}`).classList.add("btnActual")
 
 }
 

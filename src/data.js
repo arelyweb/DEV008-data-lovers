@@ -6,25 +6,26 @@ export const obtenerPokemon = (nombre) => {
   return data.pokemon.find((pokemon) => pokemon.name === nombre);
 };
 
+
 /* ------------------ Ordena de forma ascendente y descente ----------------- */
 export const ordenarPokemon = (tipoOrdenamiento, arrayPokemones) => {
   if (tipoOrdenamiento === "asc") {
-    return arrayPokemones.sort((a, b) => {
-      if (a.name > b.name) {
-        return 1;
+    return arrayPokemones.sort((pokemon1, pokemon2) => {
+      if (pokemon1.name > pokemon2.name) {
+        return 1;// coloca al pokemon 2 primero
       }
-      if (a.name < b.name) {
-        return -1;
+      if (pokemon1.name < pokemon2.name) {
+        return -1;  //pokemon 1 va primero
       }
       return 0;
     });
   } else {
-    return arrayPokemones.sort((a, b) => {
-      if (a.name > b.name) {
-        return -1;
+    return arrayPokemones.sort((pokemon1, pokemon2) => {
+      if (pokemon1.name > pokemon2.name) {
+        return -1; //pokemon 1 va primero
       }
-      if (a.name < b.name) {
-        return 1;
+      if (pokemon1.name < pokemon2.name) {
+        return 1;//pokemon 2 primero
       }
       return 0;
     });
@@ -37,9 +38,7 @@ export const contarTipoPokemon = () => {
 
   data.pokemon.forEach((pokemon) => {
     pokemon.type.forEach((type) => {
-      const posicion = arrayTipoPokemon.findIndex(
-        (item) => item.tipoPokemon === type
-      );
+      const posicion = arrayTipoPokemon.findIndex((item) => item.tipoPokemon === type);
       if (posicion === -1) {
         arrayTipoPokemon.push({ tipoPokemon: type, total: 1 });
       } else {
@@ -47,7 +46,9 @@ export const contarTipoPokemon = () => {
       }
     });
   });
+
   return arrayTipoPokemon;
+
 };
 
 /* ------------------- Aplica SLICE al array que se mande ------------------- */
@@ -84,33 +85,3 @@ export const filterData = (nombreNumero) => {
 export const capitalizar = (palabra) => {
   return palabra.charAt(0).toUpperCase() + palabra.slice(1);
 }
-
-
-// export const paginaPokemon = (pagina, arrayData, datos) => {
-//   const porPagina = 10;
-//   const offset = porPagina * (pagina - 1);
-//   const arrayPaginado = [];
-//   const numeral = 0;
-//   let totalPages = 0;
-//   let pokemonesPorPagina = [];
-
-//   if (datos) {
-//     totalPages = Math.ceil(arrayData.length / porPagina);
-//     pokemonesPorPagina = arrayData.slice(offset, porPagina * pagina);
-//   } else {
-//     totalPages = Math.ceil(data.pokemon.length / porPagina);
-//     pokemonesPorPagina = data.pokemon.slice(offset, porPagina * pagina);
-//   }
-
-//   for (let i = 0; i < totalPages; i++) {
-//     arrayPaginado[i] = numeral + i;
-//   }
-
-//   return {
-//     previousPage: pagina - 1 ? pagina - 1 : null,
-//     nextPage: totalPages > pagina ? pagina + 1 : null,
-//     total: data.pokemon.length,
-//     totalPages: arrayPaginado,
-//     items: pokemonesPorPagina,
-//   };
-// };

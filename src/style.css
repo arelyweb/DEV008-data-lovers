@@ -264,4 +264,34 @@ canvas {
   width: 1000px;
 }
 
-/*# sourceMappingURL=style.css.map */
+
+.containerGrafica{
+  display: flex;
+  justify-content: space-evenly;
+  gap: 2em  ;
+  width: 100%;
+/* align-items: cente r; */
+}
+.coontenedorCard{
+    display:flex;
+    gap: 6em;
+    flex-direction:column;
+    justify-content:center;
+    align-items: center;
+    /* width:420px; */
+    font-family: sans-serif;
+}
+.cardEstadistica{
+  background: linear-gradient(180deg, #36a2eb  0%, rgba(26, 29, 193, 0) 100%);
+  border-radius: 5px;
+  padding: 20px;
+  width: 200px;
+  text-align: center;
+  font-size: 15px;
+  font-family: "Inconsolata";
+}
+
+.pTotal{
+font-size: xx-large;
+font-weight: 900;
+}
