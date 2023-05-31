@@ -22,9 +22,15 @@ export const ordenarPokemon = (tipoOrdenamiento, arrayPokemones) => {
   } else {
     return arrayPokemones.sort((pokemon1, pokemon2) => {
       if (pokemon1.name > pokemon2.name) {
+        console.log(pokemon1.name, '>', pokemon2.name);
+        console.log('opk1');
+
         return -1; //pokemon 1 va primero
       }
       if (pokemon1.name < pokemon2.name) {
+        console.log(pokemon1.name, '>', pokemon2.name);
+
+        console.log('opk2');
         return 1;//pokemon 2 primero
       }
       return 0;

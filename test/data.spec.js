@@ -1,11 +1,6 @@
 import { filterData, contarTipoPokemon, calcularPaginas, cortarArrayPokemones } from '../src/data.js';
 import { capitalizar, obtenerPokemon, ordenarPokemon } from '../src/data.js';
-import { pikachu } from './const.js';
-import { bulbasaur } from './const.js';
-import { pokemonesAsc } from './const.js';
-import { pokemonSinOrdenar } from './const.js';
-import { pokemonesDesc } from './const.js';
-
+import { pikachu, bulbasaur, pokemonesAsc, pokemonesDesc, pokemonSinOrdenarAsc, pokemonSinOrdenarDesc } from './const.js';
 describe('capitalizar', () => {
   it('is a function', () => {
     expect(typeof capitalizar).toBe('function');
@@ -19,13 +14,15 @@ describe('capitalizar', () => {
 });
 
 describe('obtenerPokemon', () => {
-  expect(typeof obtenerPokemon).toBe('function');
-});
-it('retornar el objeto pikachu cuando yo le envie el nombre pikachu', () => {
-  expect(obtenerPokemon("pikachu")).toEqual(pikachu);
-});
-it('retornar el objeto bulbasaur cuando yo le envie el nombre bulbasaur', () => {
-  expect(obtenerPokemon("bulbasaur")).toEqual(bulbasaur);
+  it('is a function', () => {
+    expect(typeof obtenerPokemon).toBe('function');
+  });
+  it('retornar el objeto pikachu cuando yo le envie el nombre pikachu', () => {
+    expect(obtenerPokemon("pikachu")).toEqual(pikachu);
+  });
+  it('retornar el objeto bulbasaur cuando yo le envie el nombre bulbasaur', () => {
+    expect(obtenerPokemon("bulbasaur")).toEqual(bulbasaur);
+  });
 });
 
 describe('filterData', () => {
@@ -85,17 +82,19 @@ describe('calcularPaginas', () => {
     expect(calcularPaginas(250, 10)).toBe(25)
   });
 });
+
 describe('ordenarPokemon', () => {
   it('is a function', () => {
     expect(typeof ordenarPokemon).toBe('function');
   });
   it('retornar el arreglo pokemonesAsc  cuando el parametro sea pokemonSinOrdenar', () => {
-    expect(ordenarPokemon("asc", pokemonSinOrdenar)).toEqual(pokemonesAsc);
+    expect(ordenarPokemon("asc", pokemonSinOrdenarAsc)).toEqual(pokemonesAsc);
   });
   it('retornar el arreglo pokemonesDesc  cuando el parametro sea pokemonSinOrdenar', () => {
-    expect(ordenarPokemon("desc", pokemonSinOrdenar)).toEqual(pokemonesDesc);
+    expect(ordenarPokemon("desc", pokemonSinOrdenarDesc)).toEqual(pokemonesDesc);
   });
 });
+
 describe('cortarArrayPokemones', () => {
   it('is a function', () => {
     expect(typeof cortarArrayPokemones).toBe('function');
