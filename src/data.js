@@ -38,9 +38,7 @@ export const contarTipoPokemon = () => {
 
   data.pokemon.forEach((pokemon) => {
     pokemon.type.forEach((type) => {
-      const posicion = arrayTipoPokemon.findIndex(
-        (item) => item.tipoPokemon === type
-      );
+      const posicion = arrayTipoPokemon.findIndex((item) => item.tipoPokemon === type);
       if (posicion === -1) {
         arrayTipoPokemon.push({ tipoPokemon: type, total: 1 });
       } else {
@@ -48,7 +46,9 @@ export const contarTipoPokemon = () => {
       }
     });
   });
+
   return arrayTipoPokemon;
+
 };
 
 /* ------------------- Aplica SLICE al array que se mande ------------------- */

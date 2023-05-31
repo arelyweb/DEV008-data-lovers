@@ -16,7 +16,7 @@ import data from "./data/pokemon/pokemon.js";
 const modalPokemon = document.getElementById("modalPokemon");
 let pokemones = [];
 const pokemonesPorPagina = 12;
-let pagina;
+let paginaActual;
 let totalPaginas;
 
 
@@ -230,23 +230,21 @@ document.getElementById("btnCerrar").onclick = function () {
 /* ----------------------- Crea la paginacion inicial ----------------------- */
 function crearPaginacionInicial(pokemonesAPaginar) {
   pokemones = pokemonesAPaginar; // Es el arreglo que se cargara
-  pagina = 1; // Cuando se crea la paginación  la pagina por defecto es 1
+  paginaActual = 1; // Cuando se crea la paginación  la pagina por defecto es 1
   totalPaginas = calcularPaginas(pokemones.length, pokemonesPorPagina); //Calculamos cuantos botoncitos de paginacion vamos a necesitar
   crearBotonesPaginacion(); // Funcion que crea los botones con numeros
-  const pokemonesAMostrar = cortarArrayPokemones(pokemonesPorPagina * (pagina - 1), pokemonesPorPagina * pagina, pokemones);//Vamos por los primeros pokemones
+  const pokemonesAMostrar = cortarArrayPokemones(pokemonesPorPagina * (paginaActual - 1), pokemonesPorPagina * paginaActual, pokemones);//Vamos por los primeros pokemones
   muestraDatosTabla(pokemonesAMostrar); //Mostramos los pokemones en la tabla
-  pagina = pagina + 1;//Aumentamos la pagina
-
   //Pintamos el boton
   pintarCuadrito()
 }
 
 /* --------------------- Evento clic del boton Adelante --------------------- */
 document.getElementById("btnAdelante").addEventListener("click", () => {
-  if (pagina <= totalPaginas) {
-    const pokemonesAMostrar = cortarArrayPokemones(pokemonesPorPagina * (pagina - 1), pokemonesPorPagina * pagina, pokemones);
+  if (paginaActual < totalPaginas) {
+    paginaActual = paginaActual + 1;
+    const pokemonesAMostrar = cortarArrayPokemones(pokemonesPorPagina * (paginaActual - 1), pokemonesPorPagina * paginaActual, pokemones);
     muestraDatosTabla(pokemonesAMostrar);
-    pagina = pagina + 1;
     //Pintamos el boton
     pintarCuadrito()
   }
@@ -254,9 +252,9 @@ document.getElementById("btnAdelante").addEventListener("click", () => {
 
 /* ----------------------- Evento clic del boton Atras ---------------------- */
 document.getElementById("btnAtras").addEventListener("click", () => {
-  if (pagina > 2) {
-    pagina = pagina - 1;
-    const pokemonesAMostrar = cortarArrayPokemones(pokemonesPorPagina * (pagina - 2), pokemonesPorPagina * (pagina - 1), pokemones);
+  if (paginaActual > 1) {
+    paginaActual = paginaActual - 1;
+    const pokemonesAMostrar = cortarArrayPokemones(pokemonesPorPagina * (paginaActual - 1), pokemonesPorPagina * (paginaActual), pokemones);
     muestraDatosTabla(pokemonesAMostrar);
     //Pintamos el boton
     pintarCuadrito()
@@ -267,9 +265,9 @@ document.getElementById("btnAtras").addEventListener("click", () => {
 function crearBotonesPaginacion() {
   const contenedorBotones = document.getElementById("contenedorBotones");
   contenedorBotones.innerHTML = "";
-  for (let i = 0; i < totalPaginas; i++) {
+  for (let i = 1; i <= totalPaginas; i++) {
     const boton = document.createElement("button");
-    boton.innerHTML = i + 1;
+    boton.innerHTML = i;
     boton.id = 'btn' + boton.innerHTML
     boton.classList.add("buttonPagination")
     boton.addEventListener("click", cargarPokemonesPorPagina);
@@ -279,19 +277,18 @@ function crearBotonesPaginacion() {
 
 /* ------ Funcion de cada uno de los botones de las paginas disponibles ----- */
 function cargarPokemonesPorPagina(e) {
-  const paginaSeleccionada = parseInt(e.target.innerHTML);
-  const pokemonesAMostrar = cortarArrayPokemones(pokemonesPorPagina * (paginaSeleccionada - 1), pokemonesPorPagina * paginaSeleccionada, pokemones);
+  paginaActual = parseInt(e.target.innerHTML);
+  const pokemonesAMostrar = cortarArrayPokemones(pokemonesPorPagina * (paginaActual - 1), pokemonesPorPagina * paginaActual, pokemones);
   muestraDatosTabla(pokemonesAMostrar);
-  pagina = paginaSeleccionada + 1;
   pintarCuadrito();
 }
 
 function pintarCuadrito() {
-  for (let i = 0; i < totalPaginas; i++) {
-    document.getElementById(`btn${i + 1}`).classList.remove("btnActual")
+  for (let i = 1; i <= totalPaginas; i++) {
+    document.getElementById(`btn${i}`).classList.remove("btnActual")
 
   }
-  document.getElementById(`btn${pagina - 1}`).classList.add("btnActual")
+  document.getElementById(`btn${paginaActual}`).classList.add("btnActual")
 
 }
 
