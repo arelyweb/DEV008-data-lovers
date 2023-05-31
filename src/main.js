@@ -286,7 +286,6 @@ function cargarPokemonesPorPagina(e) {
 function pintarCuadrito() {
   for (let i = 1; i <= totalPaginas; i++) {
     document.getElementById(`btn${i}`).classList.remove("btnActual")
-
   }
   document.getElementById(`btn${paginaActual}`).classList.add("btnActual")
 
