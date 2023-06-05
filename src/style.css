@@ -11,10 +11,6 @@ header {
   padding-bottom: 15px;
 }
 
-img {
-  width: 100%;
-}
-
 td {
   text-align: center;
 }
@@ -29,6 +25,10 @@ table tr:nth-child(odd) {
 
 table tr:nth-child(even) {
   background-color: #f7f7f7;
+}
+
+.imgHeader {
+  width: 100%;
 }
 
 .main-conteiner {
@@ -90,7 +90,7 @@ table tr:nth-child(even) {
   color: #191919;
   position: absolute;
   width: 20px;
-  height: 20px;
+  height: auto;
   left: 12px;
   top: 50%;
   transform: translateY(-50%);
@@ -101,7 +101,6 @@ table tr:nth-child(even) {
 }
 
 .buttonpill {
-  border: none;
   padding: 5px 10px;
   text-align: center;
   text-decoration: none;
@@ -109,6 +108,13 @@ table tr:nth-child(even) {
   margin: 4px 2px;
   cursor: pointer;
   border-radius: 16px;
+  background-color: white;
+  border: 2px solid #77A6E1;
+  transition-duration: 0.2s;
+}
+.buttonpill:hover {
+  background-color: #77A6E1;
+  color: white;
 }
 
 /* fin de propiedades de pagina principal*/
@@ -125,22 +131,22 @@ table tr:nth-child(even) {
   overflow: auto;
   background-color: rgba(0, 0, 0, 0.8);
   font-family: "Inconsolata", monospace;
+  max-width: 100vw;
+  max-height: 100vh;
 }
 .modal__carta-box {
-  padding: 0px 0px 0px 20px;
-  width: 100%;
-  height: 100%;
-  max-width: 1000px;
-  margin: 0px 0px 0px 420px;
+  display: flex;
   justify-content: center;
+  position: relative;
+  max-width: 100vw;
+  max-height: 100vh;
 }
 .modal__carta-box__carta {
+  position: relative;
+  width: 50%;
+  height: 50%;
   transform-style: preserve-3d;
   transition: all 1s linear;
-  width: 100%;
-  height: 100%;
-  max-width: 550px;
-  position: relative;
   transform: rotateY(0deg);
   backface-visibility: hidden;
 }
@@ -148,31 +154,39 @@ table tr:nth-child(even) {
   transform: rotateY(180deg);
 }
 .modal__carta-box__carta__cara {
-  width: 80%;
-  height: 80%;
-  background: url("https://raw.githubusercontent.com/Luzgalan/DEV008-data-lovers/feature/paginacion-table/img/cardPokemon_frente.png");
-  background-size: cover;
-}
-.modal__carta-box__carta__cara__nomPokemon {
-  padding: 65px;
-}
-.modal__carta-box__carta__cara__imgPokemon {
-  padding: 0px 0px 0px 70px;
   width: 60%;
   height: 60%;
+  position: absolute;
+  backface-visibility: hidden;
 }
-.modal__carta-box__carta__cara__info {
-  padding: 50px;
-  float: right;
+.modal__carta-box__carta__cara__nomPokemon {
+  position: absolute;
+  top: 60%;
+  left: 10%;
+  margin-top: 13%;
+  font-size: 2vw;
 }
-.modal__carta-box__carta__caradetras {
+.modal__carta-box__carta__cara__imgPokemon {
+  position: absolute;
+  top: -20%;
+  left: 10%;
   width: 80%;
   height: 80%;
-  background-image: url("https://raw.githubusercontent.com/Luzgalan/DEV008-data-lovers/feature/paginacion-table/img/cardPokemon_atras.png");
-  background-size: cover;
-  transform: rotateY(180deg);
+  margin-top: 20%;
+}
+.modal__carta-box__carta__cara__info {
   position: absolute;
-  top: 0;
+  top: 50%;
+  left: 90%;
+  margin-top: 128%;
+  margin-left: -23%;
+  font-size: 1vw;
+}
+.modal__carta-box__carta__caradetras {
+  position: absolute;
+  width: 60%;
+  height: 60%;
+  transform: rotateY(180deg);
   backface-visibility: hidden;
 }
 .modal__carta-box__carta__caradetras__flexbox {
@@ -180,10 +194,18 @@ table tr:nth-child(even) {
   justify-content: space-between;
 }
 .modal__carta-box__carta__caradetras__flexbox__nomPokemon {
-  padding: 65px;
+  position: absolute;
+  top: 60%;
+  left: 10%;
+  margin-top: 13%;
+  font-size: 2vw;
 }
 .modal__carta-box__carta__caradetras__flexbox__close {
-  padding: 26px;
+  position: absolute;
+  top: 50%;
+  left: 90%;
+  margin-top: 6%;
+  margin-left: -3%;
 }
 .modal__carta-box__carta__caradetras__flexbox__close__closeButton {
   font-size: 15px;
@@ -193,53 +215,18 @@ table tr:nth-child(even) {
   cursor: pointer;
 }
 .modal__carta-box__carta__caradetras__infoPokemon {
-  padding: 2em;
+  position: absolute;
+  top: -20%;
+  left: 10%;
+  margin-top: 20%;
+  margin-right: 10%;
+  font-size: 1vw;
 }
 
-@media screen and (max-width: 800px) {
-  .modal__carta-box {
-    max-width: 800px;
-    margin: 0px 0px 0px 120px;
-  }
-  .modal__carta-box__carta {
-    width: 50%;
-    height: 50%;
-    max-width: 800px;
-  }
-  .modal__carta-box__carta__cara {
-    width: 80%;
-    height: 80%;
-  }
-  .modal__carta-box__carta__cara__nomPokemon {
-    padding: 25px;
-  }
-  .modal__carta-box__carta__cara__imgPokemon {
-    padding: 0px 0px 0px 30px;
-    width: 60%;
-    height: 60%;
-  }
-  .modal__carta-box__carta__cara__info {
-    padding: 30px;
-  }
-  .modal__carta-box__carta__caradetras {
-    width: 80%;
-    height: 80%;
-  }
-  .modal__carta-box__carta__caradetras__flexbox__nomPokemon {
-    padding: 10px;
-  }
-  .modal__carta-box__carta__caradetras__flexbox__close {
-    padding: 10px;
-  }
-  .modal__carta-box__carta__caradetras__infoPokemon {
-    padding: 5px;
-    font-size: 9px;
-  }
-  table {
-    display: block;
-    overflow-x: auto;
-  }
+.imagenpokemon, #frente, #detras {
+  width: 100%;
 }
+
 /* fin de propiedades modal*/
 
 .buttonPagination {
@@ -264,25 +251,26 @@ canvas {
   width: 1000px;
 }
 
-
-.containerGrafica{
+.containerGrafica {
   display: flex;
   justify-content: space-evenly;
-  gap: 2em  ;
+  gap: 2em;
   width: 100%;
-/* align-items: cente r; */
+  /* align-items: cente r; */
 }
-.coontenedorCard{
-    display:flex;
-    gap: 6em;
-    flex-direction:column;
-    justify-content:center;
-    align-items: center;
-    /* width:420px; */
-    font-family: sans-serif;
+
+.coontenedorCard {
+  display: flex;
+  gap: 6em;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* width:420px; */
+  font-family: sans-serif;
 }
-.cardEstadistica{
-  background: linear-gradient(180deg, #36a2eb  0%, rgba(26, 29, 193, 0) 100%);
+
+.cardEstadistica {
+  background: linear-gradient(180deg, #77A6E1 0%, rgba(26, 29, 193, 0) 100%);
   border-radius: 5px;
   padding: 20px;
   width: 200px;
@@ -291,7 +279,9 @@ canvas {
   font-family: "Inconsolata";
 }
 
-.pTotal{
-font-size: xx-large;
-font-weight: 900;
+.pTotal {
+  font-size: xx-large;
+  font-weight: 900;
 }
+
+/*# sourceMappingURL=style.css.map */

@@ -28,6 +28,7 @@ window.addEventListener("load", function () {
 /* ---------------------------- Reseteo de pagina --------------------------- */
 document.getElementById("pokemon").addEventListener("click", function () {
   crearPaginacionInicial(data.pokemon);
+  document.getElementById("idInputBusqueda").value = "";
 });
 
 /* --------------------- Busca los pókemones por nombre --------------------- */
@@ -219,6 +220,12 @@ function mostrarModal(event) {
 
 document.getElementById("btnCerrar").onclick = function () {
   modalPokemon.style.display = "none";
+};
+
+document.getElementById("modalPokemon").onclick = function (e) {
+  if (e.target.id === "modalPokemon") {
+    modalPokemon.style.display = "none";
+  }
 };
 
 // document.getElementById("elipseCerrar").onclick = function () {

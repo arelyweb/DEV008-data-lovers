@@ -23,7 +23,7 @@
           </map>
           <img
             src="https://raw.githubusercontent.com/Laboratoria/DEV008-data-lovers/fd299dd48244c39ea36d464b69ca67568b9a7ab2/img/lineaPokemon.png"
-            alt="Imagen POKÉMON." usemap="#mapa1">
+            alt="Imagen POKÉMON." usemap="#mapa1" class="imgHeader">
         </td>
       </tr>
     </table>
@@ -117,32 +117,34 @@
   /*------------------------------------------------------------------ -->
   <!-- ---------------------------- Modal pokemon ---------------------------- -->
   <div id="modalPokemon" class="modal">
-
     <!-- Modal content -->
-
-
     <p id="nombreTitulo">Pokemon</p>
     <div class="modal__carta-box">
       <div class="modal__carta-box__carta">
+
         <div class="modal__carta-box__carta__cara">
+          <img id="frente"
+            src="https://raw.githubusercontent.com/Luzgalan/DEV008-data-lovers/feature/paginacion-table/img/cardPokemon_frente.png">
           <div class="modal__carta-box__carta__cara__nomPokemon">
             <label id="nombrePokemon" for=""></label>
           </div>
           <div class="modal__carta-box__carta__cara__imgPokemon">
-            <img id="imagenPokemon">
+            <img id="imagenPokemon" class="imagenpokemon">
           </div>
           <div class="modal__carta-box__carta__cara__info">
             <label for="">Más info</label>
           </div>
         </div>
         <div class="modal__carta-box__carta__caradetras">
+          <img id="detras"
+            src="https://raw.githubusercontent.com/Luzgalan/DEV008-data-lovers/feature/paginacion-table/img/cardPokemon_atras.png">
           <div class="modal__carta-box__carta__caradetras__flexbox">
             <div class="modal__carta-box__carta__caradetras__flexbox__nomPokemon">
               <label id="nombrePokemontwo" for=""></label>
             </div>
             <div class="modal__carta-box__carta__caradetras__flexbox__close">
               <button type="button" class="modal__carta-box__carta__caradetras__flexbox__close__closeButton"
-                id="btnCerrar"><img src="./icons/close.png" alt=""></button>
+                id="btnCerrar"><img src="./icons/close.png" alt="" style="width: 80%;"></button>
             </div>
           </div>
           <div id="informacion" class="modal__carta-box__carta__caradetras__infoPokemon">
