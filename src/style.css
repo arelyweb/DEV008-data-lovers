@@ -304,6 +304,22 @@ canvas {
   font-family: "Inconsolata";
 }
 
+.container-menu{
+  display: flex;
+  flex-direction: row-reverse;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  gap: 2em;
+  margin-bottom: 2em;;
+}
+
+.busqueda-contenedor{
+  display: flex;
+  flex-direction: row;
+}
+
 .pTotal{
 font-size: xx-large;
 font-weight: 900;
@@ -317,4 +333,11 @@ font-weight: 900;
   flex-direction: row;
   justify-content: center;
 }
+.container-menu{
+  flex-direction: column-reverse;
+  align-items: baseline;
+  gap:0.5em 
 }
+
+}
+
