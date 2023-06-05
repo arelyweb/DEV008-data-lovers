@@ -93,24 +93,12 @@ document.getElementById("promedioPokemones").addEventListener("click", function 
   if (e.target.innerHTML === "Ver estadística") {
     document.getElementById("promedioPokemones").innerHTML = "Ver tabla";
     document.getElementById("idtablapokemones").style.display = "none";
-
-    document.getElementById("menuBusqueda").style.display = "none";
     document.getElementById("divBusqueda").style.display = "none";
+    document.getElementById("divOrden").style.display = "none";
     document.getElementById("divPaginacion").style.display = "none";
     document.getElementById("estadistica").style.display = "flex";
 
-
-
-
-    const divGrafica = document.getElementById("grafica");
-    divGrafica.innerHTML = "";
-    divGrafica.style.display = "flex";
-
     const estadistica = contarTipoPokemon();
-    const tipoPokemones = estadistica.map((item) => item.tipoPokemon);
-    const totalPokemones = estadistica.map((item) => item.total);
-
-
 
     const conteoPokemon = estadistica.sort(function (a, b) {
       return a.total - b.total;
@@ -121,9 +109,13 @@ document.getElementById("promedioPokemones").addEventListener("click", function 
     document.getElementById("totalPokemonMenor").innerHTML = conteoPokemon[0].total
 
 
+    const divGrafica = document.getElementById("grafica");
+    divGrafica.innerHTML = "";
+    divGrafica.style.display = "flex";
     const ctx = document.createElement("canvas");
     divGrafica.appendChild(ctx);
-
+    const tipoPokemones = estadistica.map((item) => item.tipoPokemon);
+    const totalPokemones = estadistica.map((item) => item.total);
     new Chart(ctx, {
       type: "bar",
       data: {
@@ -169,16 +161,9 @@ document.getElementById("promedioPokemones").addEventListener("click", function 
     document.getElementById("idtablapokemones").style.display = "table";
     document.getElementById("divPaginacion").style.display = "flex";
     document.getElementById("estadistica").style.display = "none";
-    document.getElementById("menuBusqueda").style.display = "block";
-    document.getElementById("divBusqueda").style.display = "block";
-
-
-
-
-
-    document
-      .getElementById("idtablapokemones")
-      .classList.add("main-conteiner__table");
+    document.getElementById("divOrden").style.display = "block";
+    document.getElementById("divBusqueda").style.display = "flex";
+    document.getElementById("idtablapokemones").classList.add("main-conteiner__table");
   }
 });
 
@@ -188,10 +173,6 @@ document.getElementById("slcOrdenar").addEventListener("change", function (event
   const pokemonOrdenados = ordenarPokemon(tipoOrdenamiento, pokemones);
   crearPaginacionInicial(pokemonOrdenados);
 });
-
-
-
-
 
 /* -------------------------------------------------------------------------- */
 /*                                  M O D A L                                 */
