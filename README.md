@@ -6,12 +6,11 @@
 * [2. Objetivos del proyecto.](#2-resumen-del-proyecto)
 * [3. Historias de usuario.](#4-historias-de-usuario)
 * [4. Prototipo de baja fidelidad.](#6-hacker-edition)
-* [5. Diseño de la interfaz de usuario.](#5-diseño-de-la-interfaz-de-usuario)
-* [6. Link FIGMA del proyecto.](#7-consideraciones-técnicas)
-* [7. Test de Usabilidad.](#8-pistas-tips-y-lecturas-complementarias)
-* [8. Objetivos de aprendizaje.](#9-checklist)
-* [9. Links de ayuda.](#9-checklist)
-* [10. Link del proyecto.](#9-checklist)
+* [5. Prototipo de alta fidelidad.](#5-diseño-de-la-interfaz-de-usuario)
+* [6. Test de Usabilidad.](#8-pistas-tips-y-lecturas-complementarias)
+* [7. Objetivos de aprendizaje.](#9-checklist)
+* [8. Links de ayuda.](#9-checklist)
+* [9. Link del proyecto.](#9-checklist)
 
 ***
 ## 1. Definición del producto
@@ -126,28 +125,30 @@ DEFINICIÓN DE TERMINADO
 2.	La colaboradora podrá descargar los cambios en su local.
 
 
-### 4. Prototipo de baja fidelidad
+## 4. Prototipo de baja fidelidad
 En  la siguiente imagen se podrá observar nuestro boceto del cual fue el punto partida para realizar el prototipo de alta fidelidad en figma. Los cambios fueron surgiendo conforme a las necesidades que se hiban presentando.
 ![Image text](/src/icons/boceto1.jpg)
 
-## 7. Diseño de la Interfaz de Usuario
+## 5. Prototipo de alta fidelidad
 
 Decidimos utilizar colores basados en el logo oficial de Pokémon para que amenizara la experiencia de usuario, el funcionamiento es mostrar una tabla de pokemones que permita realizar búsquedas simples y poder consultar los datos e imagen del pokémon.
 
-### Prototipo de alta fidelidad
 
 ![Imagen de la página principal.](https://raw.githubusercontent.com/Luzgalan/DEV008-data-lovers/feature/paginacion-table/img/prototipo/paginaPrincipal_DT.jpg)
 
-![Imagen de la gráfica que muestra el conteo por tipo y generación.](https://raw.githubusercontent.com/Luzgalan/DEV008-data-lovers/feature/paginacion-table/img/prototipo/grafica_DT.jpg)
+![Imagen de la gráfica que muestra el conteo por tipo y generación.](https://raw.githubusercontent.com/Luzgalan/DEV008-data-lovers/develop/img/prototipo/grafica_DT.jpg)
 
-![Imagen de la parte frontal de la tarjeta del pokémon.](https://raw.githubusercontent.com/Luzgalan/DEV008-data-lovers/feature/paginacion-table/img/prototipo/tarjetaFrente_DT.jpg)
+![Imagen de la parte frontal de la tarjeta del pokémon.](https://raw.githubusercontent.com/Luzgalan/DEV008-data-lovers/develop/img/prototipo/tarjetaFrente_DT.jpg)
 
-![Imagen de la parte trasera de la tarjeta del pokémon.](https://raw.githubusercontent.com/Luzgalan/DEV008-data-lovers/feature/paginacion-table/img/prototipo/tarjetaDetras_DT.jpg)
+![Imagen de la parte trasera de la tarjeta del pokémon.](https://raw.githubusercontent.com/Luzgalan/DEV008-data-lovers/develop/img/prototipo/tarjetaDetras_DT.jpg)
+
+### Link de FIGMA
 
 * [Link a FIGMA del proyecto](https://www.figma.com/file/IwIB5IsbdV69MQzJJaxM8K/DATALOVERS?type=design&node-id=1%3A2&t=cIVfROvni0Mu4kt9-1)
 
+## 6. Testa de usabilidad
 
-## 8. Objetivos de aprendizaje
+## 7. Objetivos de aprendizaje
 
 El proyecto fue realizado usando Javascrip, HTML y CSS de cada uno de ellos se obtuvo un aprendizaje para poder concluir el proyecto a continuacion se detalla sobre lo aprendido.
 
@@ -223,7 +224,7 @@ Se utilizo en lenguaje de desarrollo en java scritp vainilla para desarrollar la
 * Utilizar identificadores descriptivos (Nomenclatura | Semántica).
 * Utilizar linter para seguir buenas prácticas (ESLINT).
 
-## 9. Links de ayuda
+## 8. Links de ayuda
 
 ### GIT
 
@@ -244,7 +245,9 @@ Se utilizo en lenguaje de desarrollo en java scritp vainilla para desarrollar la
 * [METODOS](https://www.freecodecamp.org/espanol/news/el-manual-de-arreglos-en-javascript/)
 * [METODOS](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
 
-## 10. Checklist
+## 9. Links del proyecto
+
+### Checklist
 
 * [ ] Usa VanillaJS.
 * [ ] Pasa linter (`npm run pretest`)
