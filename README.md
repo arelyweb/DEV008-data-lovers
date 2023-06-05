@@ -14,9 +14,24 @@
 * [10. Link del proyecto.](#9-checklist)
 
 ***
+## 1. Definición del producto
+Pokedex-Data Lovers  es un sitio web dirigido a usarios que sean fans de la franquicia pokemon y desean saber mas información de los pokemones.
+La pagina web brinda a los usuarios la facilidad de realizar diversas acciones de forma sencilla , intuitiva e iteractiva.
+
+Las principales acicones que el usuario podran realizar son:
+* Buscar un pokemon por nombre o número.
+* Ordenar todos los pokemones disponibles por nombre (ascendete y descente).
+*Ordenar los pokemones previamente filtrados por nombre (ascendete y descente).
+* Ver la información  detallada de un pokemon a través de una tarjeta llamativa e iteractiva.
+* ver una gráfica con las estadisticas  de los pokemones basados en su tipo.
+* ver que tipo de pokemon más comunes y el menos común.
+
+## 2. Objetivo del proyecto
+
+Desarrollar una pagina web que permite visualizar la data, ordenar (ascendente y descendente), filtrar datos y mostrar una gráfica con las estadisitcas de tipo pokemon utilizando las herramietas tecnológicas para sastifacer las necesidades de los usuarios finales.
 ## 3. Historias de Usuario
 
-*Nuestra obtención de historias de usuario se basó en la descripción del README y en la búsqueda de páginas que mostraban datos del pokémones. Asimismo de preguntas informales a usuarios que jugaban pokémonGo sobre qué datos del pokémon son relevantes para jugar. Con esta información obtuvimos ocho historias de usuario.
+*Nuestra obtención de historias de usuario se basó en la descripción del README y en la búsqueda de páginas que mostraban datos del pokémones. Asi mismo de preguntas informales a usuarios que jugaban pokémonGo sobre qué datos del pokémon son relevantes para jugar. Con esta información obtuvimos ocho historias de usuario.
 
 [DT-1] Mostrar datos de pokemon.
  
@@ -111,6 +126,10 @@ DEFINICIÓN DE TERMINADO
 2.	La colaboradora podrá descargar los cambios en su local.
 
 
+### 4. Prototipo de baja fidelidad
+En  la siguiente imagen se podrá observar nuestro boceto del cual fue el punto partida para realizar el prototipo de alta fidelidad en figma. Los cambios fueron surgiendo conforme a las necesidades que se hiban presentando.
+![Image text](/src/icons/boceto1.jpg)
+
 ## 7. Diseño de la Interfaz de Usuario
 
 Decidimos utilizar colores basados en el logo oficial de Pokémon para que amenizara la experiencia de usuario, el funcionamiento es mostrar una tabla de pokemones que permita realizar búsquedas simples y poder consultar los datos e imagen del pokémon.
@@ -128,12 +147,89 @@ Decidimos utilizar colores basados en el logo oficial de Pokémon para que ameni
 * [Link a FIGMA del proyecto](https://www.figma.com/file/IwIB5IsbdV69MQzJJaxM8K/DATALOVERS?type=design&node-id=1%3A2&t=cIVfROvni0Mu4kt9-1)
 
 
+## 8. Objetivos de aprendizaje
+
+El proyecto fue realizado usando Javascrip, HTML y CSS de cada uno de ellos se obtuvo un aprendizaje para poder concluir el proyecto a continuacion se detalla sobre lo aprendido.
+
+### HTML
+
+* Entender y reconocer el uso de **HTML Semantico** para la mejora de la accesibilidad, el SEO, facilita el mantenimiento y la colaboración.
+* Desarrollar la maquetación HTML en concordancia con el prototipo en Figma.
+
+
+### CSS
+
+* Implementacion selectores CSS para estilizar y dar formato al contenido
+* Uso de modelos de caja para para controlar y definir el diseño y la presentación de los elementos HTML en una página web. 
+En el modelo de caja cada elemento en HTML se representa como una caja rectangular, y el modelo de caja de CSS describe cómo se calcula el tamaño total de esa caja, incluyendo el contenido, el relleno (padding), los bordes (border) y los márgenes (margin).
+
+
+* Uso de **Flexbox** para crear diseños flexibles y responsivos en la página web. Esto nos permitio organizar y alinear de manera eficiente los elementos dentro de un contenedor
+### Web APIs
+
+**Uso de selectores del DOM**
+
+ Se utilizaron para seleccionar y acceder a elementos específicos en la página web, lo que permitio interactuar con ellos y manipular su contenido, estilo, atributos y eventos.
+
+  * Listeners: se utilizaron para detectar y responder a eventos que ocurren en los elementos HTML de la página web. 
+    + EventTarget.addEventListener()
+    + El objeto Event
+  * Manipulacion dinámica del DOM: fue utilizado par  modificar y actualizar el contenido, la estructura y el estilo del sitio  web en tiempo real mediante JavaScript, permitiendonos agregar, eliminar y modificar elementos y sus atributos, así como cambiar el contenido y el estilo de los elementos existentes
+    + Node.appendChild() 
+    + Document.createElement() 
+    + Element.innerHTML 
+    + Node.textContent
+    + Element.classList.add()
+    + Element.classList.remove()
+    + Element.value
+    + Event.target
+
+### JavaScript
+Se utilizo en lenguaje de desarrollo en java scritp vainilla para desarrollar la logica y el funcionamiento del sitio usando:
+
+* Datos primitivos y no primitivos
+*Variables (declaración, asignación, ámbito)
+* Arrays
+  + Array.filter()
+  + Array.sort()
+  + Array.map()
+  + Array.foreach()
+  + Array.find()
+  + Array.findIndex()
+  + Array.slice()
+  + Array.length
+ * Funciones (parámetros, argumentos, valor de retorno).
+ * Uso de condicionales (if y lógica booleana).
+ Uso de bucles/ciclos (for).
+ * ES Modules (import | export).  
+ * Objetos (key, value) 
+ * Pruebas unitarias  jest (unit tests).
+
+ ### Hacker edition
+ Para poder mostrar la grafica de los tipos de pokemones fue necesario incluir el siguente elemento:
+ *Chart.js: es una biblioteca de graficos de java scritp que nos permite incluir graficas de forma  sencilla y flexible.
+
+### Git, Git hub y Git flow
+
+ Git flow: Se utlizo este modelo de ramificación ya que nos facilita la organización del trabajo y el seguimiento de las diferentes etapas de desarrollo.
+
+* Git: Control de versiones con git (init, clone, add, commit, status, push, pull, remote).
+* Git repositorios de GitHub (clone, fork, gh-pages).
+* Git: Integración de cambios entre ramas (branch, checkout, merge, reset)
+* GitHub: Despliegue con GitHub Pages
+
+### Buenas practicas de desarrollo
+* Organizar y dividir el código en módulos (Modularización).
+* Utilizar identificadores descriptivos (Nomenclatura | Semántica).
+* Utilizar linter para seguir buenas prácticas (ESLINT).
+
 ## 9. Links de ayuda
 
 ### GIT
 
 * [COMANDOS](https://education.github.com/git-cheat-sheet-education.pdf)
 * [COMANDOS](https://learngitbranching.js.org/?locale=es_ES)
+* [COMANDOS](https://www.atlassian.com/es/git/tutorials/comparing-workflows/gitflow-workflow#:~:text=%C2%BFQu%C3%A9%20es%20Gitflow%3F,vez%20y%20quien%20lo%20populariz%C3%B3.)
 
 ### EFECTO FLIP
 
@@ -143,6 +239,10 @@ Decidimos utilizar colores basados en el logo oficial de Pokémon para que ameni
 ### MODAL
 
 * [MODAL](https://www.youtube.com/watch?v=iIayPuuB2gY)
+
+### Java Script
+* [METODOS](https://www.freecodecamp.org/espanol/news/el-manual-de-arreglos-en-javascript/)
+* [METODOS](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
 
 ## 10. Checklist
 
@@ -164,3 +264,4 @@ Decidimos utilizar colores basados en el logo oficial de Pokémon para que ameni
 * [ ] UI: Permite ordenar data por uno o más campos (asc y desc).
 * [ ] UI: Permite filtrar data en base a una condición.
 * [ ] UI: Es _responsive_.
+
