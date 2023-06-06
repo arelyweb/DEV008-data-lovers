@@ -2,15 +2,14 @@
 
 ## Índice
 
-* [1. Definición del producto.](#1-preámbulo)
-* [2. Objetivos del proyecto.](#2-resumen-del-proyecto)
+* [1. Definición del producto.](#1-definición-del-producto)
+* [2. Objetivos del proyecto.](#2-objetivos-del-proyecto)
 * [3. Historias de usuario.](#4-historias-de-usuario)
-* [4. Prototipo de baja fidelidad.](#6-hacker-edition)
-* [5. Prototipo de alta fidelidad.](#5-diseño-de-la-interfaz-de-usuario)
-* [6. Test de Usabilidad.](#8-pistas-tips-y-lecturas-complementarias)
-* [7. Objetivos de aprendizaje.](#9-checklist)
-* [8. Links de ayuda.](#9-checklist)
-* [9. Link del proyecto.](#9-checklist)
+* [4. Prototipo de baja fidelidad.](#6-prototipo-de-baja-fidelidad)
+* [5. Prototipo de alta fidelidad.](#5-prototipo-de-alta-fidelidad)
+* [6. Objetivos de aprendizaje.](#7-objetivos-de-aprendizaje)
+* [7. Links de ayuda.](#8-links-de-ayuda)
+* [8. Link del proyecto.](#9-link-del-proyecto)
 
 ***
 ## 1. Definición del producto
@@ -28,101 +27,94 @@ Las principales acicones que el usuario podran realizar son:
 ## 2. Objetivo del proyecto
 
 Desarrollar una pagina web que permite visualizar la data, ordenar (ascendente y descendente), filtrar datos y mostrar una gráfica con las estadisitcas de tipo pokemon utilizando las herramietas tecnológicas para sastifacer las necesidades de los usuarios finales.
+
 ## 3. Historias de Usuario
 
 *Nuestra obtención de historias de usuario se basó en la descripción del README y en la búsqueda de páginas que mostraban datos del pokémones. Asi mismo de preguntas informales a usuarios que jugaban pokémonGo sobre qué datos del pokémon son relevantes para jugar. Con esta información obtuvimos ocho historias de usuario.
 
-[DT-1] Mostrar datos de pokemon.
+### [DT-1] Mostrar datos de pokemon.
  
- Descripción  	 
-CRITERIOS DE ACEPTACIÓN
-1.	Se mostrará en una ventana al dar click en el listado de pokemones.
-2.	Se mostrará la imagen del pokémon, nombre, descripción, generación, tipo, movimiento rápido, ataque especial, debilidades y resistencia.
-3.	Se podrá cerrar la ventana y regresar al listado de pokemones.
-DEFINICIÓN DE TERMINADO
-1.	Todo el código de las modificaciones será subido a la rama DEVELOP.
-2.	La colaboradora podrá descargar los cambios en su local.
+  *CRITERIOS DE ACEPTACIÓN*
+  1.	Se mostrará en una ventana al dar click en el listado de pokemones.
+  2.	Se mostrará la imagen del pokémon, nombre, descripción, generación, tipo, movimiento rápido, ataque especial, debilidades y resistencia.
+  3.	Se podrá cerrar la ventana y regresar al listado de pokemones.
+  *DEFINICIÓN DE TERMINADO*
+  1.	Todo el código de las modificaciones será subido a la rama DEVELOP.
+  2.	La colaboradora podrá descargar los cambios en su local.
 
-[DT-2] Realizar la paginación de la tabla.
- Descripción  	 
+### [DT-2] Realizar la paginación de la tabla.
+ 	 
+  *CRITERIOS DE ACEPTACIÓN*
+  1.	Mostrará un paginado que permita al usuario recorrer de manera manual el listado de pokemones.
+  2.	Solo mostrará 12 pokemones por página.
+  3.	Mostrará un paginado con númeral y botónes que permitan avanzar.
+  4.	Se mostrará cada vez que exista más de 12 pokemones en la lista.
+  *DEFINICIÓN DE TERMINADO*
+  1.	Todo el código de las modificaciones será subido a la rama DEVELOP.
+  2.	La colaboradora podrá descargar los cambios en su local.
 
- CRITERIOS DE ACEPTACIÓN
-1.	Mostrará un paginado que permita al usuario recorrer de manera manual el listado de pokemones.
-2.	Solo mostrará 12 pokemones por página.
-3.	Mostrará un paginado con númeral y botónes que permitan avanzar.
-4.	Se mostrará cada vez que exista más de 12 pokemones en la lista.
-DEFINICIÓN DE TERMINADO
-1.	Todo el código de las modificaciones será subido a la rama DEVELOP.
-2.	La colaboradora podrá descargar los cambios en su local.
+### [DT-3] Mostrar listado de todos los pokemones.
+	 
+  *CRITERIO DE ACEPTACIÓN*
+  1.	Se verá en una tabla.
+  2.	Mostrar el número, nombre, generación, tipo y Pokémon.
+  3.	Permitir ver la información del pokémon al dar click en Ver Pokemon.
+  4.	Interacción en ver Pokemon.
+  *DEFINICIÓN DE TERMINADO*
+  1.	Todo el código de las modificaciones será subido a la rama DEVELOP.
+  2.	La colaboradora podrá descargar los cambios en su local.
 
-[DT-3] Mostrar listado de todos los pokemones.
+### [DT-4] Filtrar por nombre y número de los pokemones.
 
- Descripción  	 
- CRITERIO DE ACEPTACIÓN
-1.	Se verá en una tabla.
-2.	Mostrar el número, nombre, generación, tipo y Pokémon.
-3.	Permitir ver la información del pokémon al dar click en Ver Pokemon.
-4.	Interacción en ver Pokemon.
-DEFINICIÓN DE TERMINADO
-1.	Todo el código de las modificaciones será subido a la rama DEVELOP.
-2.	La colaboradora podrá descargar los cambios en su local.
+  *CRITERIO DE ACEPTACIÓN*
+  1.	Se verá en una tabla.
+  2.	Mostrar el número, nombre, generación, tipo y Pokémon.
+  3.	Permitir ver la información del pokémon al dar click en Ver Pokemon.
+  4.	Interacción en ver Pokemon.
+  *DEFINICIÓN DE TERMINADO*
+  1.	Todo el código de las modificaciones será subido a la rama DEVELOP.
+  2.	La colaboradora podrá descargar los cambios en su local.
 
-[DT-4] Filtrar por nombre y número de los pokemones.
+### [DT-5] Ordenar de forma ascendente los pokemones.
+ 	 
+  *CRITERIOS DE ACEPTACIÓN*
+  1.	El elemento se selección permitirá al usuario poder elegir el tipo ordenamiento.
+  2.	Cuando el usuario da clic en tipo ordenamiento (ASCENDENTE) mostrar listado de pokemones que inicien de la letra A hasta Z.
+  3.	Cuando el usuario da clic en tipo ordenamiento (DESCENDENTE) mostrar listado de pokemones que inicien de la letra Z hasta A.
+  *DEFINICIÓN DE TERMINADO*
+  1.	Una vez terminado la codificación se subirá los cambios en la rama develop.
+  2.	La colaboradora podrá descargar los cambios en su local.
 
- Descripción  	 
- CRITERIO DE ACEPTACIÓN
-1.	Se verá en una tabla.
-2.	Mostrar el número, nombre, generación, tipo y Pokémon.
-3.	Permitir ver la información del pokémon al dar click en Ver Pokemon.
-4.	Interacción en ver Pokemon.
-DEFINICIÓN DE TERMINADO
-1.	Todo el código de las modificaciones será subido a la rama DEVELOP.
-2.	La colaboradora podrá descargar los cambios en su local.
+### [DT-6] Gráfica de las categorías y totales de los pokemones.
+ 	 
+  *CRITERIOS DE ACEPTACIÓN*
+  1.	Se mostrará una gráfica que muestre el conteo de tipo de pokemon.
+  2.	Se mostrará un contreo de generacion de pokemon.
+  3.	Se mostrará en otro apartado diferente a la página principal.
+  4.	Permitirá al usuario regresar a la página principal.
+  *DEFINICIÓN DE TERMINADO*
+  1.	Una vez terminado la codificación se subirá los cambios en la rama develop.
+  2.	La colaboradora podrá descargar los cambios en su local.
 
-[DT-5] Ordenar de forma ascendente los pokemones.
+### [DT-7] Filtrado por ordenamiento ASC y DESC.
 
- Descripción  	 
-CRITERIOS DE ACEPTACIÓN
-1.	El elemento se selección permitirá al usuario poder elegir el tipo ordenamiento.
-2.	Cuando el usuario da clic en tipo ordenamiento (ASCENDENTE) mostrar listado de pokemones que inicien de la letra A hasta Z.
-3.	Cuando el usuario da clic en tipo ordenamiento (DESCENDENTE) mostrar listado de pokemones que inicien de la letra Z hasta A.
-DEFINICIÓN DE TERMINADO
-1.	Una vez terminado la codificación se subirá los cambios en la rama develop.
-2.	La colaboradora podrá descargar los cambios en su local.
+  *CRITERIOS DE ACEPTACIÓN*
+  1.	Se deberá ordenar los datos filtrados por el usuario.
+  2.	El usuario deberá seleccionar el tipo de ordenamiento (ASCENDENTE O DESCENDENTE).
+  *DEFINICIÓN DE TERMINADO*
+  1.	Una vez terminado la codificación se subirá los cambios en la rama develop.
+  2.	La colaboradora podrá descargar los cambios en su local.
 
-[DT-6] Gráfica de las categorías y totales de los pokemones.
+### [DT-8] Realizar la página responsive.
 
- Descripción  	 
- CRITERIOS DE ACEPTACIÓN
-1.	Se mostrará una gráfica que muestre el conteo de tipo de pokemon.
-2.	Se mostrará un contreo de generacion de pokemon.
-3.	Se mostrará en otro apartado diferente a la página principal.
-4.	Permitirá al usuario regresar a la página principal.
-DEFINICIÓN DE TERMINADO
-1.	Una vez terminado la codificación se subirá los cambios en la rama develop.
-2.	La colaboradora podrá descargar los cambios en su local.
-
-[DT-7] Filtrado por ordenamiento ASC y DESC.
-
- Descripción  	 
- CRITERIOS DE ACEPTACIÓN
-1.	Se deberá ordenar los datos filtrados por el usuario.
-2.	El usuario deberá seleccionar el tipo de ordenamiento (ASCENDENTE O DESCENDENTE).
-DEFINICIÓN DE TERMINADO
-1.	Una vez terminado la codificación se subirá los cambios en la rama develop.
-2.	La colaboradora podrá descargar los cambios en su local.
-
-[DT-8] Realizar la página responsive.
-
- Descripción  	 
- CRITERIOS DE ACEPTACIÓN
-1.	El listado se mostrará responsivo.
-2.	La tarjeta pokemon se mostrará responsiva.
-3.	La gráfica se mostrará responsiva.
-4.	Paginado se mostrará responsivo
-DEFINICIÓN DE TERMINADO
-1.	Una vez terminado la codificación se subirá los cambios en la rama develop.
-2.	La colaboradora podrá descargar los cambios en su local.
+  *CRITERIOS DE ACEPTACIÓN*
+  1.	El listado se mostrará responsivo.
+  2.	La tarjeta pokemon se mostrará responsiva.
+  3.	La gráfica se mostrará responsiva.
+  4.	Paginado se mostrará responsivo
+  *DEFINICIÓN DE TERMINADO*
+  1.	Una vez terminado la codificación se subirá los cambios en la rama develop.
+  2.	La colaboradora podrá descargar los cambios en su local.
 
 
 ## 4. Prototipo de baja fidelidad
@@ -133,8 +125,7 @@ En  la siguiente imagen se podrá observar nuestro boceto del cual fue el punto 
 
 Decidimos utilizar colores basados en el logo oficial de Pokémon para que amenizara la experiencia de usuario, el funcionamiento es mostrar una tabla de pokemones que permita realizar búsquedas simples y poder consultar los datos e imagen del pokémon.
 
-
-![Imagen de la página principal.](https://raw.githubusercontent.com/Luzgalan/DEV008-data-lovers/feature/paginacion-table/img/prototipo/paginaPrincipal_DT.jpg)
+![Imagen de la página principal.](https://raw.githubusercontent.com/Luzgalan/DEV008-data-lovers/develop/img/prototipo/paginaPrincipal_DT.jpg)
 
 ![Imagen de la gráfica que muestra el conteo por tipo y generación.](https://raw.githubusercontent.com/Luzgalan/DEV008-data-lovers/develop/img/prototipo/grafica_DT.jpg)
 
@@ -146,9 +137,8 @@ Decidimos utilizar colores basados en el logo oficial de Pokémon para que ameni
 
 * [Link a FIGMA del proyecto](https://www.figma.com/file/IwIB5IsbdV69MQzJJaxM8K/DATALOVERS?type=design&node-id=1%3A2&t=cIVfROvni0Mu4kt9-1)
 
-## 6. Testa de usabilidad
 
-## 7. Objetivos de aprendizaje
+## 6. Objetivos de aprendizaje
 
 El proyecto fue realizado usando Javascrip, HTML y CSS de cada uno de ellos se obtuvo un aprendizaje para poder concluir el proyecto a continuacion se detalla sobre lo aprendido.
 
@@ -224,7 +214,7 @@ Se utilizo en lenguaje de desarrollo en java scritp vainilla para desarrollar la
 * Utilizar identificadores descriptivos (Nomenclatura | Semántica).
 * Utilizar linter para seguir buenas prácticas (ESLINT).
 
-## 8. Links de ayuda
+## 7. Links de ayuda
 
 ### GIT
 
@@ -245,7 +235,9 @@ Se utilizo en lenguaje de desarrollo en java scritp vainilla para desarrollar la
 * [METODOS](https://www.freecodecamp.org/espanol/news/el-manual-de-arreglos-en-javascript/)
 * [METODOS](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/findIndex)
 
-## 9. Links del proyecto
+## 8. Link del proyecto
+
+* [Link del proyecto]()
 
 ### Checklist
 
