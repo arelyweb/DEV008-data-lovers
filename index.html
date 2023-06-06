@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>Data Lovers</title>
+  <link rel="stylesheet" href="style.css" />
+
+  <link rel="shortcut icon" href="https://www.pokencyclopedia.info/sprites/spin-off/ico_shuffle/ico_shuffle_001.png">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <!-- precarga de libreria -->
+</head>
+
+<body>
+  <header>
+    <table>
+      <tr>
+        <td>
+          <map name="mapa1">
+            <area id="pokemon" alt="Pulsa para regrasar a la p&aacute;gina principal." shape="RECT" coords="0,0,250,200"
+              href="#">
+          </map>
+          <img
+            src="https://raw.githubusercontent.com/Laboratoria/DEV008-data-lovers/fd299dd48244c39ea36d464b69ca67568b9a7ab2/img/lineaPokemon.png"
+            alt="Imagen POKÉMON." usemap="#mapa1" class="imgHeader">
+        </td>
+      </tr>
+    </table>
+  </header>
+  <!-- ----------------------------------------------------------------------- -->
+  <!--                             MENU PRINCIPAL                              -->
+  <!-- ----------------------------------------------------------------------- -->
+
+  <main class="main-conteiner">
+    <section class="container-menu">
+      <!-- -------------------------- Boton estadistica -------------------------- -->
+      <div> <button class="button prom" id="promedioPokemones">Ver estadística</button></div>
+      <!-- --------------------------- Etiqueta select --------------------------- -->
+      <div id="divOrden">
+        <label for="">Ordenar pokemon por nombre:</label>
+        <select class="button" name="" id="slcOrdenar">
+          <option selected="true" disabled="disabled">Seleccione tipo de ordenamiento</option>
+          <option class="button__option" value="asc">Ascedentemente</option>
+          <option class="button__option" value="desc">Descendentemente</option>
+        </select>
+      </div>
+      <!-- ----------------------- contenedor de busqueda ------------------------ -->
+      <div id="divBusqueda" class="busqueda-contenedor">
+        <div id="divBusqueda" class="input-wrapper">
+          <input type="search" id="idInputBusqueda" class="input-wrapper__input"
+            placeholder="Buscar por nombre o n&uacute;mero" />
+          <svg xmlns="http://www.w3.org/2000/svg" class="input-wrapper__input__input-icon" viewBox="0 0 20 20"
+            fill="currentColor">
+            <path fill-rule="evenodd"
+              d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+              clip-rule="evenodd" />
+          </svg>
+        </div>
+        <button class="button" id="idBotonBuscar">Buscar</button>
+      </div>
+    </section>
+    <section class="main-conteiner__section-table">
+      <!-- -------------------------------- tabla -------------------------------- -->
+      <table class="main-conteiner__table" id="idtablapokemones">
+        <thead>
+          <tr>
+            <th>N&uacute;mero</th>
+            <th>Nombre</th>
+            <th>Generaci&oacute;n</th>
+            <th>Tipo</th>
+            <th>Pok&eacute;mon</th>
+          </tr>
+        </thead>
+        <tbody id="cuerpoTabla">
+        </tbody>
+      </table>
+      <!-- ----------------------------- estadistica ----------------------------- -->
+      <div id="estadistica" class="containerGrafica" style="display: none;">
+        <div class="coontenedorCard">
+          <div class="cardEstadistica">
+            <p id="tipoPokemonMayor">Generación kanto</p>
+            <p class="pTotal" id="totalPokemonMayor"></p>
+            <p>Pokemones</p>
+          </div>
+          <div class="cardEstadistica">
+            <p id="tipoPokemonMenor">Generación pikachu</p>
+            <p class="pTotal" id="totalPokemonMenor"></p>
+            <p>Pokemones</p>
+          </div>
+        </div>
+        <!-- ------------------ contenedor para la grafica canva ------------------- -->
+        <div id="grafica" class="contenedor-grafica">
+        </div>
+      </div>
+    </section>
+  </main>
+  <!-- ----------------------------------------------------------------------- -->
+  <!--                           P A G I N A C I O N                           -->
+  <!-- ----------------------------------------------------------------------- -->
+  <div id="divPaginacion" class="contenedor-horizonal">
+    <button class="buttonPagination" id="btnAtras">Atrás</button>
+    <div id="contenedorBotones"></div>
+    <button class="buttonPagination" id="btnAdelante">Adelante</button>
+  </div>
+  <!-- ----------------------------------------------------------------*/
+  /*------------- Termina menuPrincipal---------------------------------*/
+  /*------------------------------------------------------------------ -->
+  <!-- ---------------------------- Modal pokemon ---------------------------- -->
+  <div id="modalPokemon" class="modal">
+    <!-- Modal content -->
+    <p id="nombreTitulo">Pokemon</p>
+    <div class="modal__carta-box">
+      <div class="modal__carta-box__carta">
+
+        <div class="modal__carta-box__carta__cara">
+          <img id="frente"
+            src="https://raw.githubusercontent.com/Luzgalan/DEV008-data-lovers/feature/paginacion-table/img/cardPokemon_frente.png">
+          <div class="modal__carta-box__carta__cara__nomPokemon">
+            <label id="nombrePokemon" for=""></label>
+          </div>
+          <div class="modal__carta-box__carta__cara__imgPokemon">
+            <img id="imagenPokemon" class="imagenpokemon">
+          </div>
+          <div class="modal__carta-box__carta__cara__info">
+            <label for="">Más info</label>
+          </div>
+        </div>
+        <div class="modal__carta-box__carta__caradetras">
+          <img id="detras"
+            src="https://raw.githubusercontent.com/Luzgalan/DEV008-data-lovers/feature/paginacion-table/img/cardPokemon_atras.png">
+          <div class="modal__carta-box__carta__caradetras__flexbox">
+            <div class="modal__carta-box__carta__caradetras__flexbox__nomPokemon">
+              <label id="nombrePokemontwo" for=""></label>
+            </div>
+            <div class="modal__carta-box__carta__caradetras__flexbox__close">
+              <button type="button" class="modal__carta-box__carta__caradetras__flexbox__close__closeButton"
+                id="btnCerrar"><img src="./icons/close.png" alt="" style="width: 80%;"></button>
+            </div>
+          </div>
+          <div id="informacion" class="modal__carta-box__carta__caradetras__infoPokemon">
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- ----------------------------------------------------------------------- -->
+  <!--                          TERMINA MODAL POKEMON                          -->
+  <!-- ----------------------------------------------------------------------- -->
+  <script src="main.js" type="module"></script>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+</html>
