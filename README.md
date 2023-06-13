@@ -237,7 +237,7 @@ Se utilizo en lenguaje de desarrollo en java scritp vainilla para desarrollar la
 
 ## 8. Link del proyecto
 
-* [Link del proyecto]()
+* [Link del proyecto](https://arelyweb.github.io/DEV008-data-lovers/)
 
 ### Checklist
 
